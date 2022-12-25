@@ -1,0 +1,30 @@
+{
+  "name": "ts_powerful",
+  "version": "1.0.0",
+  "description": "Projeto Integrado de Conclusão de Curso Especialização Web FullStack - Jesse Lima",
+  "main": "index.js",
+  "scripts": {
+    "test": "run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jflaviojf3/ts_powerful_backend.git"
+  },
+  "keywords": [
+    "timesheet",
+    "especializacao",
+    "pucminas"
+  ],
+  "author": "Jesse Lima",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jflaviojf3/ts_powerful_backend/issues"
+  },
+  "homepage": "https://github.com/jflaviojf3/ts_powerful_backend#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
+}
