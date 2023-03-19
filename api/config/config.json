@@ -2,8 +2,9 @@
   "development": {
     "username": "mysql",
     "password": "9c833cad384fd1bc",
-    "database": "ts_powerful_dev",
+    "database": "ts_powerful",
     "host": "186.202.57.75",
+    "port": "8700",
     "dialect": "mysql"
   },
   "test": {
