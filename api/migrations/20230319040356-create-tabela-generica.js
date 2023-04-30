@@ -10,13 +10,15 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       idPropriedade: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       descricaoPropriedade: {
         type: Sequelize.STRING
       },
       codPropriedade: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       descricaoCodigo: {
         type: Sequelize.STRING

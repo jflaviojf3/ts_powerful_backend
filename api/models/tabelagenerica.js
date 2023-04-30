@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'tabelaGenerica',
+    freezeTableName: true
   });
   return tabelaGenerica;
 };
