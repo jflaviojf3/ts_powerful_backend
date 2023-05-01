@@ -11,7 +11,7 @@ module.exports = app => {
     app.use(usuarios)
     app.use(parametros)
 
-    app.get('/', (req, res) => res.send('Olá Teste Routes'))
+    app.get('/', (req, res) => res.redirect('/v1/api-docs'))
     
     app.get('/terms', (req, res) => {
         res.send('Termos de Serviço')
