@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Clientes', {
-      id: {
+      id_clientes: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -20,6 +20,11 @@ module.exports = {
       },
       email: {
         type: Sequelize.STRING
+      },
+      id_projetos: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {model: 'Projetos', key: 'id_projetos'}
       },
       createdAt: {
         allowNull: false,

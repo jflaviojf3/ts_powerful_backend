@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Usuarios', {
-      id: {
+      id_usuarios: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -47,6 +47,22 @@ module.exports = {
       },
       foto: {
         type: Sequelize.BLOB('medium')
+      },
+      id_cargo: {
+        allowNull: true,
+        type: Sequelize.INTEGER,
+        references: {model: 'Cargos', key: 'id_cargos'}
+      },
+      id_organizacoes: {
+        allowNull: true,
+        type: Sequelize.INTEGER,
+        references: {model: 'Organizacoes', key: 'id_organizacoes'}
+      },
+      cod_sexo: {
+        type: Sequelize.INTEGER,
+      },
+      cod_perfil: {
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,

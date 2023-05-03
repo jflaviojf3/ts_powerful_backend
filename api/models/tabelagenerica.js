@@ -10,14 +10,14 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+
     }
   }
   tabelaGenerica.init({
-    idPropriedade: DataTypes.INTEGER,
-    descricaoPropriedade: DataTypes.STRING,
-    codPropriedade: DataTypes.INTEGER,
-    descricaoCodigo: DataTypes.STRING
+    id_propriedade: DataTypes.INTEGER,
+    descricao_propriedade: DataTypes.STRING,
+    cod_propriedade: DataTypes.INTEGER,
+    descricao_codigo: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'tabelaGenerica',

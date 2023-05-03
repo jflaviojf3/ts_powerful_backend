@@ -3,24 +3,24 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('tabelaGenerica', {
-      id: {
+      id_tabGenerica: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      idPropriedade: {
+      id_propriedade: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      descricaoPropriedade: {
+      descricao_propriedade: {
         type: Sequelize.STRING
       },
-      codPropriedade: {
+      cod_propriedade: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: false
       },
-      descricaoCodigo: {
+      descricao_codigo: {
         type: Sequelize.STRING
       },
       createdAt: {
