@@ -28,6 +28,11 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {model: 'Organizacoes', key: 'id_organizacoes'}
       },
+      id_clientes: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {model: 'Clientes', key: 'id_clientes'}
+      },
       id_equipes: {
         allowNull: false,
         type: Sequelize.INTEGER,

@@ -23,11 +23,6 @@ module.exports = {
       email: {
         type: Sequelize.STRING
       },
-      id_projetos: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        references: {model: 'Projetos', key: 'id_projetos'}
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
