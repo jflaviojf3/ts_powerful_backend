@@ -10,9 +10,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       nome: {
-        type: Sequelize.STRING
+        allowNull: false,
+        type: Sequelize.STRING,
       },
       data_inicio: {
+        allowNull: false,
         type: Sequelize.DATEONLY
       },
       data_fim: {

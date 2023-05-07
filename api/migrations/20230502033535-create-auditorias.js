@@ -13,18 +13,17 @@ module.exports = {
         type: Sequelize.STRING
       },
       data_hora_inicio: {
+        allowNull: false,
         type: Sequelize.DATE
       },
       data_hora_fim: {
         type: Sequelize.DATE
       },
       id_tarefas: {
-        allowNull: false,
         type: Sequelize.INTEGER,
         references: {model: 'Tarefas', key: 'id_tarefas'}
       },
       id_pontos: {
-        allowNull: false,
         type: Sequelize.INTEGER,
         references: {model: 'Pontos', key: 'id_pontos'}
       },

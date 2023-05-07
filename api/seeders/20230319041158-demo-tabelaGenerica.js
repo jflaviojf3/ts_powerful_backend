@@ -5,58 +5,82 @@ module.exports = {
   async up (queryInterface, Sequelize) {
 
      await queryInterface.bulkInsert('tabelaGenerica', [{
-      idPropriedade: 1,
-      descricaoPropriedade: "Sexo",
-      codPropriedade: 1,
-      descricaoCodigo: "Masculino",
+      id_propriedade: 1,
+      descricao_propriedade: "Sexo",
+      cod_propriedade: 1,
+      descricao_codigo: "Masculino",
       createdAt: new Date(),
       updatedAt: new Date()
      },
      {
-      idPropriedade: 1,
-      descricaoPropriedade: "Sexo",
-      codPropriedade: 2,
-      descricaoCodigo: "Feminino",
+      id_propriedade: 1,
+      descricao_propriedade: "Sexo",
+      cod_propriedade: 2,
+      descricao_codigo: "Feminino",
       createdAt: new Date(),
       updatedAt: new Date()
      },     
      {
-      idPropriedade: 2,
-      descricaoPropriedade: "Perfil",
-      codPropriedade: 1,
-      descricaoCodigo: "Usuário",
+      id_propriedade: 2,
+      descricao_propriedade: "Perfil",
+      cod_propriedade: 1,
+      descricao_codigo: "Usuário",
       createdAt: new Date(),
       updatedAt: new Date()
      },     
      {
-      idPropriedade: 2,
-      descricaoPropriedade: "Perfil",
-      codPropriedade: 2,
-      descricaoCodigo: "Funcionário",
+      id_propriedade: 2,
+      descricao_propriedade: "Perfil",
+      cod_propriedade: 2,
+      descricao_codigo: "Funcionário",
       createdAt: new Date(),
       updatedAt: new Date()
      },     
      {
-      idPropriedade: 2,
-      descricaoPropriedade: "Perfil",
-      codPropriedade: 3,
-      descricaoCodigo: "Gerente",
+      id_propriedade: 2,
+      descricao_propriedade: "Perfil",
+      cod_propriedade: 3,
+      descricao_codigo: "Gerente",
       createdAt: new Date(),
       updatedAt: new Date()
      },     
      {
-      idPropriedade: 2,
-      descricaoPropriedade: "Perfil",
-      codPropriedade: 4,
-      descricaoCodigo: "Adm. Sistema",
+      id_propriedade: 2,
+      descricao_propriedade: "Perfil",
+      cod_propriedade: 4,
+      descricao_codigo: "Adm. Sistema",
       createdAt: new Date(),
       updatedAt: new Date()
      },     
      {
-      idPropriedade: 3,
-      descricaoPropriedade: "Categoria",
-      codPropriedade: 1,
-      descricaoCodigo: "Adm. Sistema",
+      id_propriedade: 3,
+      descricao_propriedade: "Categoria",
+      cod_propriedade: 1,
+      descricao_codigo: "Estágio",
+      createdAt: new Date(),
+      updatedAt: new Date()
+     },     
+     {
+      id_propriedade: 3,
+      descricao_propriedade: "Categoria",
+      cod_propriedade: 2,
+      descricao_codigo: "Júnior",
+      createdAt: new Date(),
+      updatedAt: new Date()
+     },     
+     {
+      id_propriedade: 3,
+      descricao_propriedade: "Categoria",
+      cod_propriedade: 3,
+      descricao_codigo: "Pleno",
+      createdAt: new Date(),
+      updatedAt: new Date()
+     },     
+     {
+      id_propriedade: 3,
+      descricao_propriedade: "Categoria",
+      cod_propriedade: 4,
+      descricao_codigo: "Sênior",
       createdAt: new Date(),
       updatedAt: new Date()
      }], {});

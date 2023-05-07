@@ -10,13 +10,15 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       nome: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       descricao: {
         type: Sequelize.STRING
       },
       data_inicio: {
-        type: Sequelize.DATEONLY
+        allowNull: false,
+        type: Sequelize.DATEONLY,
       },
       data_fim: {
         type: Sequelize.DATEONLY

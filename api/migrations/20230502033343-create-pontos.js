@@ -10,12 +10,15 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       situacao: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       hora_ponto: {
+        allowNull: false,
         type: Sequelize.DATE
       },
       descricao: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       id_usuarios: {

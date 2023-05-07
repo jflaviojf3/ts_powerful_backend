@@ -19,6 +19,7 @@ module.exports = {
         type: Sequelize.DATEONLY
       },
       cod_categoria: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       createdAt: {

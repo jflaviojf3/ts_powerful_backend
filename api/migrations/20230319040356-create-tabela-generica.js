@@ -10,18 +10,20 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       id_propriedade: {
-        type: Sequelize.INTEGER,
         allowNull: false,
+        type: Sequelize.INTEGER,
       },
       descricao_propriedade: {
-        type: Sequelize.STRING
+        allowNull: false,
+        type: Sequelize.STRING,
       },
       cod_propriedade: {
+        allowNull: false,
         type: Sequelize.INTEGER,
-        allowNull: false
       },
       descricao_codigo: {
-        type: Sequelize.STRING
+        allowNull: false,
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,

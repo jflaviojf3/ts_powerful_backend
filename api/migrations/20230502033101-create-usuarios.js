@@ -10,25 +10,25 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       nome: {
-        type: Sequelize.STRING,
         allowNull: false,
+        type: Sequelize.STRING,
       },
       sobrenome: {
-        type: Sequelize.STRING,
         allowNull: false,
+        type: Sequelize.STRING,
       },
       email: {
-        type: Sequelize.STRING,
         allowNull: false,
+        type: Sequelize.STRING,
       },
       senha: {
-        type: Sequelize.STRING,
         allowNull: false,
+        type: Sequelize.STRING,
       },
       ativo: {
-        type: Sequelize.BOOLEAN,
         allowNull: false,
-        defaultValue: 1
+        defaultValue: 1,
+        type: Sequelize.BOOLEAN,
       },
       ddd: {
         type: Sequelize.INTEGER
@@ -48,21 +48,19 @@ module.exports = {
       foto: {
         type: Sequelize.BLOB('medium')
       },
-      id_cargo: {
-        allowNull: true,
-        type: Sequelize.INTEGER,
-        references: {model: 'Cargos', key: 'id_cargos'}
-      },
-      id_organizacoes: {
-        allowNull: true,
-        type: Sequelize.INTEGER,
-        references: {model: 'Organizacoes', key: 'id_organizacoes'}
-      },
       cod_sexo: {
         type: Sequelize.INTEGER,
       },
       cod_perfil: {
         type: Sequelize.INTEGER,
+      },
+      id_cargo: {
+        type: Sequelize.INTEGER,
+        references: {model: 'Cargos', key: 'id_cargos'}
+      },
+      id_organizacoes: {
+        type: Sequelize.INTEGER,
+        references: {model: 'Organizacoes', key: 'id_organizacoes'}
       },
       createdAt: {
         allowNull: false,
