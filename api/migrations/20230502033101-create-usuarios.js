@@ -54,7 +54,7 @@ module.exports = {
       cod_perfil: {
         type: Sequelize.INTEGER,
       },
-      id_cargo: {
+      id_cargos: {
         type: Sequelize.INTEGER,
         references: {model: 'Cargos', key: 'id_cargos'}
       },

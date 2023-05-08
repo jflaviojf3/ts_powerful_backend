@@ -13,9 +13,8 @@ class UsuarioController {
     static async pegaUmUsuario(req, res){
         const {id} = req.params
         try {
-            const umUsuario = await database.Usuarios.findOne({ where: {id:Number(id)}})
+            const umUsuario = await database.Usuarios.findOne({ where: {id_usuarios:Number(id)}})
             return res.status(200).json(umUsuario)
-        
         } catch (error) {
             return res.status(500).json(error.message)
         }
@@ -26,7 +25,6 @@ class UsuarioController {
         try {
             const umNovoUsuarioCriado = await database.Usuarios.create(novoUsuario)
             return res.status(200).json(umNovoUsuarioCriado)
-        
         } catch (error) {
             return res.status(500).json(error.message)
         }
@@ -36,9 +34,8 @@ class UsuarioController {
         const {id} = req.params
         const atualizaUsuario = req.body
         try {
-            await database.Usuarios.update(atualizaUsuario, { where: {id:Number(id)}})
-            
-            const umUsuarioAtualizado = await database.Usuarios.findOne({ where: {id:Number(id)}})
+            await database.Usuarios.update(atualizaUsuario, { where: {id_usuarios:Number(id)}})
+            const umUsuarioAtualizado = await database.Usuarios.findOne({ where: {id_usuarios:Number(id)}})
             return res.status(200).json(umUsuarioAtualizado)
         } catch (error) {
             return res.status(500).json(error.message)
@@ -48,7 +45,7 @@ class UsuarioController {
     static async deletaUsuario(req, res){
         const {id} = req.params
         try {
-            await database.Usuarios.destroy({ where: {id:Number(id)}})
+            await database.Usuarios.destroy({ where: {id_usuarios:Number(id)}})
             return res.status(200).json({mensagem: `id ${id} deletado`})
         } catch (error) {
             return res.status(500).json(error.message)

@@ -11,6 +11,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Objetivos.init({
+    id_objetivos: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     descricao: DataTypes.STRING,
     marcado: DataTypes.INTEGER
   }, {

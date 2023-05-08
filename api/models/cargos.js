@@ -11,6 +11,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Cargos.init({
+    id_cargos: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    nome: DataTypes.STRING,
     descricao_cargo: DataTypes.STRING,
     data_inicio: DataTypes.DATEONLY,
     data_fim: DataTypes.DATEONLY,

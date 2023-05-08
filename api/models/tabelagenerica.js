@@ -9,6 +9,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   tabelaGenerica.init({
+    id_tabGenerica: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     id_propriedade: DataTypes.INTEGER,
     descricao_propriedade: DataTypes.STRING,
     cod_propriedade: DataTypes.INTEGER,

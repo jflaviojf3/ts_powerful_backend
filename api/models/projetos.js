@@ -21,6 +21,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Projetos.init({
+    id_projetos: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     nome: DataTypes.STRING,
     data_inicio: DataTypes.DATEONLY,
     data_fim: DataTypes.DATEONLY,

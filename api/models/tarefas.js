@@ -18,7 +18,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Tarefas.init({
-    entreda: DataTypes.INTEGER,
+    id_tarefas: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    entreda: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+    },
     descricao: DataTypes.STRING,
     data_inicio: DataTypes.DATE,
     data_fim: DataTypes.DATE

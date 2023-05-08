@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Auditorias.init({
+    id_auditorias: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     descricao: DataTypes.STRING,
     data_hora_inicio: DataTypes.DATE,
     data_hora_fim: DataTypes.DATE

@@ -15,6 +15,11 @@ module.exports = (sequelize, DataTypes) => {
   }
   Atribuicoes.init(
     {
+      id_atribuicoes: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
       descricao: DataTypes.STRING,
       ativo: DataTypes.INTEGER,
     },

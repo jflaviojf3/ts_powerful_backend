@@ -8,7 +8,7 @@ module.exports = {
       [
         {
           nome: "Analista de Sistema",
-          descricao_cargo: "Lima",
+          descricao_cargo: "Cargo necessário para levantamento de requisitos e demais atividades",
           cod_categoria: 2,
           data_inicio: "2023-05-01",
           data_fim: null,
@@ -21,11 +21,5 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
   }
 };

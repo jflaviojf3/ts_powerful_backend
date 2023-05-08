@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Pontos.init({
+    id_pontos: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     situacao: DataTypes.STRING,
     hora_ponto: DataTypes.DATE,
     descricao: DataTypes.STRING

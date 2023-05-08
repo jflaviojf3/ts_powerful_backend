@@ -22,7 +22,7 @@ module.exports = {
           foto: null,
           cod_sexo: 1,
           cod_perfil: 4,
-          id_cargo: 1,
+          id_cargos: 1,
           id_organizacoes:1,
           createdAt: new Date(),
           updatedAt: new Date(),
