@@ -6,7 +6,9 @@ const parametros = require('./parametrosRoute')
 const cargos = require('./cargosRoute')
 const organizacoes = require('./organizacoesRoute')
 const clientes = require('./clientesRoute')
-
+const projetos = require('./projetosRoute')
+const equipes = require('./equipesRoute')
+const pontos = require('./pontosRoute')
 
 module.exports = app => {
     app.use(bodyParser.json())
@@ -16,6 +18,9 @@ module.exports = app => {
     app.use(cargos)
     app.use(organizacoes)
     app.use(clientes)
+    app.use(projetos)
+    app.use(equipes)
+    app.use(pontos)
 
     app.get('/', (req, res) => res.redirect('/v1/api-docs'))
     

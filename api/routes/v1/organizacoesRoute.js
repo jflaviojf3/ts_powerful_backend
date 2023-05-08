@@ -3,6 +3,7 @@ const OrganizacaoController = require ('../../controllers/OrganizacaoController'
 
 const router = Router()
 
+//Manutenção de organizações
 router.get('/v1/organizacoes', OrganizacaoController.pegaTodosOrganizacao)
 router.get('/v1/organizacoes/:id', OrganizacaoController.pegaUmOrganizacao)
 router.post('/v1/organizacoes', OrganizacaoController.criaOrganizacao)
