@@ -9,6 +9,7 @@ const clientes = require('./clientesRoute')
 const projetos = require('./projetosRoute')
 const equipes = require('./equipesRoute')
 const pontos = require('./pontosRoute')
+const auditorias = require('./auditoriasRoute')
 
 module.exports = app => {
     app.use(bodyParser.json())
@@ -21,6 +22,7 @@ module.exports = app => {
     app.use(projetos)
     app.use(equipes)
     app.use(pontos)
+    app.use(auditorias)
 
     app.get('/', (req, res) => res.redirect('/v1/api-docs'))
     

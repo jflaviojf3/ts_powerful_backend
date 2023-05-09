@@ -46,38 +46,60 @@ class PontoController {
     }
   }
 
+  static async pegaPeriodoPontoUsuario(req, res) {
+    const { id_usuario, data_inicio, data_fim } = req.params;
+    const dataInicio = formata.formataData(data_inicio);
+    const dataFim = formata.formataData(data_fim);
+    try {
+      const periodoPonto = await database.Pontos.findAll({
+        where: {
+          hora_ponto: {
+            [Op.between]: [`${dataInicio} 00:00:00`, `${dataFim} 23:59:59`],
+          },
+          id_usuarios: id_usuario,
+        },
+      });
+      return res.status(200).json(periodoPonto);
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  }
+
   static async criaPonto(req, res) {
     const { id_usuario } = req.params;
     const novoPonto = { ...req.body, id_usuarios: id_usuario };
     try {
       const umNovoPontoCriado = await database.Pontos.create(novoPonto);
+      formata.criaAuditoriaPonto(`Criado Ponto ${umNovoPontoCriado.situacao}`, umNovoPontoCriado.id_pontos);
       return res.status(200).json(umNovoPontoCriado);
     } catch (error) {
       return res.status(500).json(error.message);
     }
   }
 
-  static async atualizaUsuario(req, res) {
-    const { id } = req.params;
-    const atualizaUsuario = req.body;
+ //Ex. /v1/usuarios/:id_usuario/pontos/:id_ponto 
+  static async atualizaPontos(req, res) {
+    const { id_usuario, id_ponto } = req.params;
+    const atualizaPontos = { ...req.body, id_usuarios:id_usuario};
     try {
-      await database.Usuarios.update(atualizaUsuario, {
-        where: { id_usuarios: Number(id) },
+      await database.Pontos.update(atualizaPontos, {
+        where: { id_pontos: Number(id_ponto) },
       });
-      const umUsuarioAtualizado = await database.Usuarios.findOne({
-        where: { id_usuarios: Number(id) },
+      const umPontoAtualizado = await database.Pontos.findOne({
+        where: {  id_pontos: Number(id_ponto) },
       });
-      return res.status(200).json(umUsuarioAtualizado);
+      formata.criaAuditoriaPonto(`Atualizado Ponto ${umPontoAtualizado.situacao}`, umPontoAtualizado.id_pontos);
+      return res.status(200).json(umPontoAtualizado);
     } catch (error) {
       return res.status(500).json(error.message);
     }
   }
-
+//Ex. /v1/usuarios/:id_usuario/pontos/:id_ponto
   static async deletaUsuario(req, res) {
-    const { id } = req.params;
+    const { id_usuario, id_ponto } = req.params;
     try {
-      await database.Usuarios.destroy({ where: { id_usuarios: Number(id) } });
-      return res.status(200).json({ mensagem: `id ${id} deletado` });
+      await database.Pontos.destroy({ where: { id_usuarios: Number(id_usuario), id_pontos:Number(id_ponto) } });
+      return res.status(200).json({ mensagem: `Id ponto ${id_ponto} deletado` });
     } catch (error) {
       return res.status(500).json(error.message);
     }

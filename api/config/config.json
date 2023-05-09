@@ -5,7 +5,8 @@
     "database": "ts_powerful",
     "host": "186.202.57.75",
     "port": "8700",
-    "dialect": "mysql"
+    "dialect": "mysql",
+	"timezone": "-03:00"
   },
   "test": {
     "username": "root",
