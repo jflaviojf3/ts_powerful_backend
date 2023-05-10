@@ -1,6 +1,9 @@
 const bodyParser = require('body-parser')
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('../../swagger.json');
+const swaggerJSDoc = require("swagger-jsdoc");
+const options = require('../../swagger')
+const swaggerSpec = swaggerJSDoc(options);
+
 const usuarios = require('./usuariosRoute')
 const parametros = require('./parametrosRoute')
 const cargos = require('./cargosRoute')
@@ -10,10 +13,10 @@ const projetos = require('./projetosRoute')
 const equipes = require('./equipesRoute')
 const pontos = require('./pontosRoute')
 const auditorias = require('./auditoriasRoute')
+const tarefas = require('./tarefasRoute')
 
 module.exports = app => {
     app.use(bodyParser.json())
-    app.use('/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
     app.use(usuarios)
     app.use(parametros)
     app.use(cargos)
@@ -23,10 +26,10 @@ module.exports = app => {
     app.use(equipes)
     app.use(pontos)
     app.use(auditorias)
+    app.use(tarefas)
+    
+    app.use('/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
     app.get('/', (req, res) => res.redirect('/v1/api-docs'))
-    
-    app.get('/terms', (req, res) => {
-        res.send('Termos de Serviço')
-    })
+
 }

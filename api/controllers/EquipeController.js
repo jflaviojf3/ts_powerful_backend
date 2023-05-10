@@ -44,7 +44,7 @@ class EquipeController {
   // Ex. /v1/organizacoes/:id_organizacao/equipes/:id_equipe
   static async atualizaEquipe(req, res) {
     const { id_organizacao, id_equipe } = req.params;
-    const atualizaEquipe = { ...req.body, id_equipes: id_equipe };
+    const atualizaEquipe = req.body;
     try {
       await database.Equipes.update(atualizaEquipe, {
         where: {

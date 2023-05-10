@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    entreda: {
+    entrada: {
       type: DataTypes.INTEGER,
       primaryKey: true,
     },

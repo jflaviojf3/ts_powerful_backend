@@ -70,7 +70,7 @@ class PontoController {
     const novoPonto = { ...req.body, id_usuarios: id_usuario };
     try {
       const umNovoPontoCriado = await database.Pontos.create(novoPonto);
-      formata.criaAuditoriaPonto(`Criado Ponto ${umNovoPontoCriado.situacao}`, umNovoPontoCriado.id_pontos);
+      formata.criaAuditoriaPonto(`Ponto Criado| ${umNovoPontoCriado.situacao}`, umNovoPontoCriado.id_pontos);
       return res.status(200).json(umNovoPontoCriado);
     } catch (error) {
       return res.status(500).json(error.message);
@@ -80,7 +80,7 @@ class PontoController {
  //Ex. /v1/usuarios/:id_usuario/pontos/:id_ponto 
   static async atualizaPontos(req, res) {
     const { id_usuario, id_ponto } = req.params;
-    const atualizaPontos = { ...req.body, id_usuarios:id_usuario};
+    const atualizaPontos = req.body;
     try {
       await database.Pontos.update(atualizaPontos, {
         where: { id_pontos: Number(id_ponto) },
@@ -88,14 +88,14 @@ class PontoController {
       const umPontoAtualizado = await database.Pontos.findOne({
         where: {  id_pontos: Number(id_ponto) },
       });
-      formata.criaAuditoriaPonto(`Atualizado Ponto ${umPontoAtualizado.situacao}`, umPontoAtualizado.id_pontos);
+      formata.criaAuditoriaPonto(`Ponto Atualizado| ${umPontoAtualizado.situacao}`, umPontoAtualizado.id_pontos);
       return res.status(200).json(umPontoAtualizado);
     } catch (error) {
       return res.status(500).json(error.message);
     }
   }
 //Ex. /v1/usuarios/:id_usuario/pontos/:id_ponto
-  static async deletaUsuario(req, res) {
+  static async deletaPonto(req, res) {
     const { id_usuario, id_ponto } = req.params;
     try {
       await database.Pontos.destroy({ where: { id_usuarios: Number(id_usuario), id_pontos:Number(id_ponto) } });

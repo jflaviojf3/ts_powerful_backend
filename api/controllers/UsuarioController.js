@@ -1,16 +1,19 @@
 const database = require('../models')
 
+
+  
 class UsuarioController {
+
     static async pegaTodosUsuarios(req, res){
         try {
             const todosUsuarios = await database.Usuarios.findAll()
             return res.status(200).json(todosUsuarios)
         } catch (error) {
             return res.status(500).json(error.message)
-        }
+        }      
     }
 
-    static async pegaUmUsuario(req, res){
+    static async pegaUmUsuario(req, res) {
         const {id} = req.params
         try {
             const umUsuario = await database.Usuarios.findOne({ where: {id_usuarios:Number(id)}})

@@ -14,7 +14,7 @@ static formataData(data) {
 
   static async criaAuditoriaPonto(descricao, id_ponto ) {
     try {
-      const resposta = await axios.post('http://localhost:3000/v1/auditorias/pontos', {
+      await axios.post('http://localhost:3000/v1/auditorias/pontos', {
         descricao: descricao,
         data_hora_inicio: new Date(),
         id_pontos: id_ponto
@@ -27,15 +27,14 @@ static formataData(data) {
 
   static async criaAuditoriaTarefa(descricao, data_inicio, data_fim, id_tarefa ) {
     try {
-      const resposta = await axios.post('http://localhost:3000/v1/auditorias/tarefas', {
+      await axios.post('http://localhost:3000/v1/auditorias/tarefa', {
         descricao: descricao,
         data_hora_inicio: data_inicio,
-        data_hora_fim: data_fim,
+        data_hora_fim: data_fim==undefined?null:data_fim,
         id_tarefas: id_tarefa
       });
     } catch (error) {
-      console.error(error);
-      res.status(500).send('Erro ao chamar o endpoint');
+      return res.status(500).json(error.message);
     }
   }
 

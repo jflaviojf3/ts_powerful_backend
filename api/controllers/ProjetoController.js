@@ -44,7 +44,7 @@ class ProjetoController {
   // Ex. /v1/organizacoes/:id_organizacao/projetos/:id
   static async atualizaProjeto(req, res) {
     const { id_organizacao, id } = req.params;
-    const atualizaProjeto = { ...req.body, id_organizacoes: id_organizacao };
+    const atualizaProjeto = req.body;
     try {
       await database.Projetos.update(atualizaProjeto, {
         where: {
