@@ -21,7 +21,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'tabelaGenerica',
-    freezeTableName: true
+    freezeTableName: true,
+    paranoid: true,
   });
   return tabelaGenerica;
 };

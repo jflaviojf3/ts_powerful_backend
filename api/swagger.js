@@ -77,6 +77,10 @@ const options = {
               type: "string",
               format: "date-time",
             },
+            deletedAt: {
+              type: "string",
+              format: "date-time",
+            }
           },
           required: [
             "nome",
@@ -104,6 +108,7 @@ const options = {
             id_organizacoes: 4,
             createdAt: "2023-05-09T12:34:56Z",
             updatedAt: "2023-05-09T12:34:56Z",
+            deletedAt: null
           },
         },
         Parametros: {
@@ -147,6 +152,10 @@ const options = {
               description: "Data de atualização da tabela genérica",
               example: "2023-05-09T12:34:56Z",
             },
+            deletedAt: {
+              type: "string",
+              format: "date-time",
+            }
           },
           required: [
             "id_propriedade",
@@ -162,6 +171,7 @@ const options = {
             descricao_codigo: "Feminino",
             createdAt: "2023-05-09T12:34:56Z",
             updatedAt: "2023-05-09T12:34:56Z",
+            deletedAt: null
           },
         },
         Cargos: {
@@ -204,6 +214,10 @@ const options = {
               nullable: false,
               readOnly: true,
             },
+            deletedAt: {
+              type: "string",
+              format: "date-time",
+            }
           },
           required: ["nome", "cod_categoria"],
           example: {
@@ -215,6 +229,7 @@ const options = {
             cod_categoria: 1,
             createdAt: "2023-05-09T12:34:56Z",
             updatedAt: "2023-05-09T12:34:56Z",
+            deletedAt: null
           },
         },
         Organizacoes: {
@@ -245,6 +260,10 @@ const options = {
               description: "Data da última atualização do registro",
               readOnly: true,
             },
+            deletedAt: {
+              type: "string",
+              format: "date-time",
+            }
           },
           required: ["nome"],
           example: {
@@ -252,6 +271,7 @@ const options = {
             nome: "Empresa de Exemplo",
             createdAt: "2023-05-09T12:34:56Z",
             updatedAt: "2023-05-09T12:34:56Z",
+            deletedAt: null
           },
         },
         "Equipes": {
@@ -292,6 +312,10 @@ const options = {
               "type": "string",
               "format": "date-time",
               "nullable": false
+            },
+            deletedAt: {
+              type: "string",
+              format: "date-time",
             }
           },
           "required": [
@@ -308,6 +332,7 @@ const options = {
             id_organizacoes: 1,
             createdAt: "2023-05-09T12:34:56Z",
             updatedAt: "2023-05-09T12:34:56Z",
+            deletedAt: null
           },
         },
         "Clientes": {
@@ -360,6 +385,10 @@ const options = {
               "format": "date-time",
               "description": "Data e hora da última atualização do registro",
               "readOnly": true
+            },
+            deletedAt: {
+              type: "string",
+              format: "date-time",
             }
           },
           "required": [
@@ -377,6 +406,7 @@ const options = {
             cod_prioridade: 5,
             createdAt: "2023-05-09T12:34:56Z",
             updatedAt: "2023-05-09T12:34:56Z",
+            deletedAt: null
           },
         },
         "Projetos": {
@@ -422,6 +452,10 @@ const options = {
             "updatedAt": {
               "type": "string",
               "format": "date-time"
+            },
+            deletedAt: {
+              type: "string",
+              format: "date-time",
             }
           },
           "required": [
@@ -442,6 +476,7 @@ const options = {
             id_clientes: 1,
             createdAt: "2023-05-09T12:34:56Z",
             updatedAt: "2023-05-09T12:34:56Z",
+            deletedAt: null
           },
         },
         "Tarefas": {
@@ -498,6 +533,10 @@ const options = {
               "format": "date-time",
               "description": "Data da última atualização do registro",
               "example": "2023-05-09T14:00:00Z"
+            },
+            deletedAt: {
+              type: "string",
+              format: "date-time",
             }
           },
           "required": [
@@ -516,6 +555,7 @@ const options = {
             id_projetos : 1,
             createdAt: "2023-05-09T12:34:56Z",
             updatedAt: "2023-05-09T12:34:56Z",
+            deletedAt: null
           },
         },  
         "Pontos": {
@@ -553,6 +593,10 @@ const options = {
               "type": "string",
               "format": "date-time",
               "description": "Data da última atualização do registro do ponto."
+            },
+            deletedAt: {
+              type: "string",
+              format: "date-time",
             }
           },
           "required": [
@@ -569,6 +613,7 @@ const options = {
             id_usuarios: 1,
             createdAt: "2023-05-09T12:34:56Z",
             updatedAt: "2023-05-09T12:34:56Z",
+            deletedAt: null
           },
         },
         "Auditorias": {
@@ -611,6 +656,10 @@ const options = {
               "type": "string",
               "format": "date-time",
               "readOnly": true
+            },
+            deletedAt: {
+              type: "string",
+              format: "date-time",
             }
           },
           "required": [
@@ -626,6 +675,7 @@ const options = {
             id_pontos : null,
             createdAt: "2023-05-09T12:34:56Z",
             updatedAt: "2023-05-09T12:34:56Z",
+            deletedAt: null
           },
         },
         "Objetivos": {
@@ -667,6 +717,10 @@ const options = {
               "format": "date-time",
               "description": "Data de atualização do objetivo",
               "example": "2023-05-09T12:00:00Z"
+            },
+            deletedAt: {
+              type: "string",
+              format: "date-time",
             }
           },
           "required": [
@@ -680,6 +734,7 @@ const options = {
             id_projetos: 1,
             createdAt: "2023-05-09T12:34:56Z",
             updatedAt: "2023-05-09T12:34:56Z",
+            deletedAt: null
           },
         },
         "EquipesUsuarios": {
@@ -718,6 +773,10 @@ const options = {
               "nullable": false,
               "readOnly": true,
               "description": "Data de atualização do registro"
+            },
+            deletedAt: {
+              type: "string",
+              format: "date-time",
             }
           },
           "required": [
@@ -731,14 +790,16 @@ const options = {
               id_equipes: 1,
               id_usuarios: 1,
               createdAt: "2023-05-09T12:34:56Z",
-              updatedAt: "2023-05-09T12:34:56Z"
+              updatedAt: "2023-05-09T12:34:56Z",
+              deletedAt: null
             },
             {
               id_equipes_usuarios: 2,
               id_equipes: 1,
               id_usuarios: 2,
               createdAt: "2023-05-09T12:34:56Z",
-              updatedAt: "2023-05-09T12:34:56Z"
+              updatedAt: "2023-05-09T12:34:56Z",
+              deletedAt: null
             }
           ],
         },
