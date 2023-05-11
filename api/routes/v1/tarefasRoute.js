@@ -9,8 +9,8 @@ const router = Router()
  *   get:
  *     tags:
  *      - Tarefas
- *     summary: Retorna lista de todos as Tarefas dos usuários
- *     description: Retorna a lista completa das tarefas dos usuários da base
+ *     summary: Retorna lista de todos as Tarefas do usuário
+ *     description: Retorna a lista completa das tarefas do usuário da base
  *     parameters:
  *       - name: id_usuario
  *         in: path
@@ -36,8 +36,8 @@ router.get('/v1/usuarios/:id_usuario/tarefa', TarefaController.pegaTodasTarefasU
  *   get:
  *     tags:
  *      - Tarefas
- *     summary: Retorna lista de todos as Tarefas dos usuários
- *     description: Retorna a lista completa das tarefas dos usuários da base
+ *     summary: Retorna uma Tarefas do usuário
+ *     description: Retorna uma Tarefa do usuário da base
  *     parameters:
  *       - name: id_usuario
  *         in: path
@@ -49,7 +49,7 @@ router.get('/v1/usuarios/:id_usuario/tarefa', TarefaController.pegaTodasTarefasU
  *         required: true
  *     responses:
  *       200:
- *         description: Lista de Tarefa Completa Sucesso
+ *         description: Lista de Todas Entradas de uma Tarefa Sucesso
  *         content:
  *           application/json:
  *             schema:
@@ -57,7 +57,7 @@ router.get('/v1/usuarios/:id_usuario/tarefa', TarefaController.pegaTodasTarefasU
  *               items:
  *                 $ref: '#/components/schemas/Tarefas'
  *       500:
- *         description: Erro ao Retornar Lista de Tarefas de Usuários.
+ *         description: Erro ao Retornar Lista de Entrada de Tarefa de Usuários.
  */
 router.get('/v1/usuarios/:id_usuario/tarefa/:id_tarefa', TarefaController.pegaUmaTarefaUsuario)
 
@@ -81,7 +81,7 @@ router.get('/v1/usuarios/:id_usuario/tarefa/:id_tarefa', TarefaController.pegaUm
  *         example: 20230501
  *     responses:
  *       200:
- *         description: Lista de Tarefa Completa Sucesso
+ *         description: Lista de Tarefa do dia Sucesso
  *         content:
  *           application/json:
  *             schema:
@@ -89,7 +89,7 @@ router.get('/v1/usuarios/:id_usuario/tarefa/:id_tarefa', TarefaController.pegaUm
  *               items:
  *                 $ref: '#/components/schemas/Tarefas'
  *       500:
- *         description: Erro ao Retornar Lista de Tarefas de Usuários.
+ *         description: Erro ao Retornar Lista de Tarefas do dia.
  */
 router.get('/v1/usuarios/:id_usuario/tarefaDia/:dia', TarefaController.pegaTarefaDoDiaUsuario)
 
@@ -118,7 +118,7 @@ router.get('/v1/usuarios/:id_usuario/tarefaDia/:dia', TarefaController.pegaTaref
  *         example: 20230509
  *     responses:
  *       200:
- *         description: Lista de Tarefa Completa Sucesso
+ *         description: Lista de Tarefa do Periodo com Sucesso
  *         content:
  *           application/json:
  *             schema:
@@ -126,7 +126,7 @@ router.get('/v1/usuarios/:id_usuario/tarefaDia/:dia', TarefaController.pegaTaref
  *               items:
  *                 $ref: '#/components/schemas/Tarefas'
  *       500:
- *         description: Erro ao Retornar Lista de Tarefas de Usuários.
+ *         description: Erro ao Retornar Lista de Tarefas do Periodo.
  */
 router.get('/v1/usuarios/:id_usuario/tarefaInicio/:data_inicio/tarefaFim/:data_fim', TarefaController.pegaPeriodoTarefaUsuario)
 
@@ -155,7 +155,7 @@ router.get('/v1/usuarios/:id_usuario/tarefaInicio/:data_inicio/tarefaFim/:data_f
  *         example: 20230509
  *     responses:
  *       200:
- *         description: Lista de Tarefa Completa Sucesso
+ *         description: Lista de Tarefa de um Projeto Sucesso
  *         content:
  *           application/json:
  *             schema:
@@ -163,7 +163,7 @@ router.get('/v1/usuarios/:id_usuario/tarefaInicio/:data_inicio/tarefaFim/:data_f
  *               items:
  *                 $ref: '#/components/schemas/Tarefas'
  *       500:
- *         description: Erro ao Retornar Lista de Tarefas de Usuários.
+ *         description: Erro ao Retornar Lista de Tarefas de um Projeto.
  */
 router.get('/v1/projeto/:id_projeto/tarefaInicio/:data_inicio/tarefaFim/:data_fim', TarefaController.pegaPeriodoTarefasProjetos)
 
@@ -189,7 +189,7 @@ router.get('/v1/projeto/:id_projeto/tarefaInicio/:data_inicio/tarefaFim/:data_fi
  *       required: true
  *     responses:
  *       200:
- *         description: Lista de Tarefa Completa Sucesso
+ *         description: Insere Tarefa de Usuário Com Sucesso
  *         content:
  *           application/json:
  *             schema:
@@ -197,7 +197,7 @@ router.get('/v1/projeto/:id_projeto/tarefaInicio/:data_inicio/tarefaFim/:data_fi
  *               items:
  *                 $ref: '#/components/schemas/Tarefas'
  *       500:
- *         description: Erro ao Retornar Lista de Tarefas de Usuários.
+ *         description: Erro ao Inserir Tarefas.
  */
 router.post('/v1/usuarios/:id_usuario/tarefa', TarefaController.criaTarefa)
 
@@ -207,8 +207,8 @@ router.post('/v1/usuarios/:id_usuario/tarefa', TarefaController.criaTarefa)
  *   put:
  *     tags:
  *      - Tarefas
- *     summary: Atualiza uma nova Tarefa.
- *     description: Atualiza uma nova tarefa relacionada a um usuário e podendo ou não está relacionado a um projeto;
+ *     summary: Atualiza uma Tarefa.
+ *     description: Atualiza uma tarefa relacionada a um usuário e podendo ou não está relacionado a um projeto;
  *     parameters:
  *       - name: id_usuario
  *         in: path
@@ -239,7 +239,7 @@ router.post('/v1/usuarios/:id_usuario/tarefa', TarefaController.criaTarefa)
  *               items:
  *                 $ref: '#/components/schemas/Tarefas'
  *       500:
- *         description: Erro ao Retornar Lista de Tarefas de Usuários.
+ *         description: Erro ao Retornar Tarefa Atualizada.
  */
 router.put('/v1/usuarios/:id_usuario/tarefa/:id_tarefa/entrada/:cod_entrada', TarefaController.atualizaTarefa)
 
@@ -254,11 +254,11 @@ router.put('/v1/usuarios/:id_usuario/tarefa/:id_tarefa/entrada/:cod_entrada', Ta
  *     parameters:
  *       - name: id_usuario
  *         in: path
- *         description: Id do usuário
+ *         description: Id do Usuário
  *         required: true
  *       - name: id_tarefa
  *         in: path
- *         description: Id da tarefa
+ *         description: Id da Tarefa
  *         required: true
  *       - name: cod_entrada
  *         in: path
@@ -266,7 +266,7 @@ router.put('/v1/usuarios/:id_usuario/tarefa/:id_tarefa/entrada/:cod_entrada', Ta
  *         required: true
  *     responses:
  *       200:
- *         description: Lista de Tarefa Atualizada com Sucesso
+ *         description: Tarefa Deletada com Sucesso
  *         content:
  *           application/json:
  *             schema:
@@ -274,7 +274,7 @@ router.put('/v1/usuarios/:id_usuario/tarefa/:id_tarefa/entrada/:cod_entrada', Ta
  *               items:
  *                 $ref: '#/components/schemas/Tarefas'
  *       500:
- *         description: Erro ao Retornar Lista de Tarefas de Usuários.
+ *         description: Erro ao Deletar Tarefa.
  */
 router.delete('/v1/usuarios/:id_usuario/pontos/:id_tarefa/entrada/:cod_entrada', TarefaController.deletaTarefa)
 

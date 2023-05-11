@@ -12,10 +12,10 @@ class CargoController {
   }
 
   static async pegaUmCargo(req, res) {
-    const { id } = req.params;
+    const { id_cargo } = req.params;
     try {
       const umCargo = await database.Cargos.findOne({
-        where: { id_cargos: Number(id) },
+        where: { id_cargos: Number(id_cargo) },
       });
       return res.status(200).json(umCargo);
     } catch (error) {
@@ -34,14 +34,14 @@ class CargoController {
   }
 
   static async atualizaCargo(req, res) {
-    const { id } = req.params;
+    const { id_cargo } = req.params;
     const atualizaCargo = req.body;
     try {
       await database.Cargos.update(atualizaCargo, {
-        where: { id_cargos: Number(id) },
+        where: { id_cargos: Number(id_cargo) },
       });
       const umCargoAtualizado = await database.Cargos.findOne({
-        where: { id_cargos: Number(id) },
+        where: { id_cargos: Number(id_cargo) },
       });
       return res.status(200).json(umCargoAtualizado);
     } catch (error) {
@@ -50,10 +50,10 @@ class CargoController {
   }
 
   static async deletaCargo(req, res) {
-    const { id } = req.params;
+    const { id_cargo } = req.params;
     try {
-      await database.Cargos.destroy({ where: { id_cargos: Number(id) } });
-      return res.status(200).json({ mensagem: `id ${id} deletado` });
+      await database.Cargos.destroy({ where: { id_cargos: Number(id_cargo) } });
+      return res.status(200).json({ mensagem: `id ${id_cargo} deletado` });
     } catch (error) {
       return res.status(500).json(error.message);
     }
@@ -61,11 +61,11 @@ class CargoController {
 
   //MANUTENÇÃO DAS ATRIBUIÇÕES ex: /v1/cargos/:id_cargos/atribuicoes'
   static async pegaTodasAtribuicoes(req, res) {
-    const { id_cargos } = req.params;
+    const { id_cargo } = req.params;
     try {
       const todasAtribuicoes = await database.Atribuicoes.findAll({
         where: {
-          id_cargos: Number(id_cargos),
+          id_cargos: Number(id_cargo),
         },
       });
       return res.status(200).json(todasAtribuicoes);
@@ -75,8 +75,8 @@ class CargoController {
   }
 
   static async criaAtribuicao(req, res) {
-    const { id_cargos } = req.params;
-    const novaAtribuicao = { ...req.body, id_cargos: id_cargos };
+    const { id_cargo } = req.params;
+    const novaAtribuicao = { ...req.body, id_cargos: id_cargo };
     try {
       const umaNovaAtribuicaoCriado = await database.Atribuicoes.create(
         novaAtribuicao
@@ -89,19 +89,19 @@ class CargoController {
 
   //Exemplo: /v1/cargos/:id_cargos/atribuicoes/:id_atribuicoes
   static async atualizaAtribuicao(req, res) {
-    const { id_cargos, id_atribuicoes } = req.params;
+    const { id_cargo, id_atribuicao } = req.params;
     const atualizaAtribuicao = req.body;
     try {
       await database.Atribuicoes.update(atualizaAtribuicao, {
         where: {
-          id_cargos: Number(id_cargos),
-          id_atribuicoes: Number(id_atribuicoes),
+          id_cargos: Number(id_cargo),
+          id_atribuicoes: Number(id_atribuicao),
         },
       });
       const umaAtribuicaoAtualizado = await database.Atribuicoes.findOne({
         where: {
-          id_cargos: Number(id_cargos),
-          id_atribuicoes: Number(id_atribuicoes),
+          id_cargos: Number(id_cargo),
+          id_atribuicoes: Number(id_atribuicao),
         },
       });
       return res.status(200).json(umaAtribuicaoAtualizado);
@@ -111,15 +111,15 @@ class CargoController {
   }
 
   static async deletaAtribuicao(req, res) {
-    const { id_cargos, id_atribuicoes } = req.params;
+    const { id_cargo, id_atribuicao } = req.params;
     try {
       await database.Atribuicoes.destroy({
         where: {
-          id_cargos: Number(id_cargos),
-          id_atribuicoes: Number(id_atribuicoes),
+          id_cargos: Number(id_cargo),
+          id_atribuicoes: Number(id_atribuicao),
         },
       });
-      return res.status(200).json({ mensagem: `Id atribuicao ${id_atribuicoes} deletado` });
+      return res.status(200).json({ mensagem: `Id atribuicao ${id_atribuicao} deletado` });
     } catch (error) {
       return res.status(500).json(error.message);
     }

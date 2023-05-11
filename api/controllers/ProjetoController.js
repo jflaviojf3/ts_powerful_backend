@@ -15,11 +15,11 @@ class ProjetoController {
   }
   // Ex. /v1/organizacoes/:id_organizacao/projetos/:id
   static async pegaUmProjeto(req, res) {
-    const { id_organizacao, id } = req.params;
+    const { id_organizacao, id_projeto } = req.params;
     try {
       const umProjeto = await database.Projetos.findOne({
         where: {
-          id_projetos: Number(id),
+          id_projetos: Number(id_projeto),
           id_organizacoes: Number(id_organizacao),
         },
       });
@@ -43,18 +43,18 @@ class ProjetoController {
 
   // Ex. /v1/organizacoes/:id_organizacao/projetos/:id
   static async atualizaProjeto(req, res) {
-    const { id_organizacao, id } = req.params;
+    const { id_organizacao, id_projeto } = req.params;
     const atualizaProjeto = req.body;
     try {
       await database.Projetos.update(atualizaProjeto, {
         where: {
-          id_projetos: Number(id),
+          id_projetos: Number(id_projeto),
           id_organizacoes: Number(id_organizacao),
         },
       });
       const umProjetoAtualizado = await database.Projetos.findOne({
         where: {
-          id_projetos: Number(id),
+          id_projetos: Number(id_projeto),
           id_organizacoes: Number(id_organizacao),
         },
       });
@@ -66,15 +66,15 @@ class ProjetoController {
 
   // Ex. /v1/organizacoes/:id_organizacao/projetos/:id
   static async deletaProjeto(req, res) {
-    const { id_organizacao, id } = req.params;
+    const { id_organizacao, id_projeto } = req.params;
     try {
       await database.Projetos.destroy({
         where: {
-          id_projetos: Number(id),
+          id_projetos: Number(id_projeto),
           id_organizacoes: Number(id_organizacao),
         },
       });
-      return res.status(200).json({ mensagem: `Id Projeto ${id} deletado` });
+      return res.status(200).json({ mensagem: `Id Projeto ${id_projeto} deletado` });
     } catch (error) {
       return res.status(500).json(error.message);
     }

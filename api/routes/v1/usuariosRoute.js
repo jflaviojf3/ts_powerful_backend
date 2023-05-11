@@ -27,20 +27,20 @@ router.get("/v1/usuarios", UsuarioController.pegaTodosUsuarios);
 
 /**
  * @swagger
- * /v1/usuarios/{id_usuarios}:
+ * /v1/usuarios/{id_usuario}:
  *   get:
 *     tags:
  *      - Usuarios
  *     summary: Retorna um usuário consultando por id
  *     description: Retorna um usuário base do sistema
  *     parameters:
- *       - name: id_usuarios
+ *       - name: id_usuario
  *         in: path
  *         description: Id do usuário para retornar um usuário
  *         required: true
  *     responses:
  *       200:
- *         description: Retorna 1 usuário com sucesso
+ *         description: Retorna um usuário com sucesso
  *         content:
  *           application/json:
  *             schema:
@@ -50,7 +50,7 @@ router.get("/v1/usuarios", UsuarioController.pegaTodosUsuarios);
  *       500:
  *         description: Erro ao retornar usuário.
  */
-router.get("/v1/usuarios/:id", UsuarioController.pegaUmUsuario);
+router.get("/v1/usuarios/:id_usuario", UsuarioController.pegaUmUsuario);
 
 /**
  * @swagger
@@ -58,8 +58,8 @@ router.get("/v1/usuarios/:id", UsuarioController.pegaUmUsuario);
  *   post:
  *     tags:
  *      - Usuarios
- *     summary: Retorna um usuário consultando por id
- *     description: Retorna um usuário base do sistema
+ *     summary: Insere um Novo Usuário
+ *     description: RInserir um novo Usuário na base do sistema
  *     requestBody:
  *       description: Exemplo de requestBody de um novo usuário
  *       content:
@@ -69,7 +69,7 @@ router.get("/v1/usuarios/:id", UsuarioController.pegaUmUsuario);
  *       required: true
  *     responses:
  *       200:
- *         description: Retorna 1 usuário com sucesso
+ *         description: Retorna o usuário Inserido com sucesso
  *         content:
  *           application/json:
  *             schema:
@@ -77,22 +77,22 @@ router.get("/v1/usuarios/:id", UsuarioController.pegaUmUsuario);
  *               items:
  *                 $ref: '#/components/schemas/Usuarios'
  *       500:
- *         description: Erro ao retornar usuário.
+ *         description: Erro ao Inserir usuário.
  */
 router.post("/v1/usuarios", UsuarioController.criaUsuario);
 
 /**
  * @swagger
- * /v1/usuarios/{id_usuarios}:
+ * /v1/usuarios/{id_usuario}:
  *   put:
 *     tags:
  *      - Usuarios
- *     summary: Retorna um usuário consultando por id
- *     description: Retorna um usuário base do sistema
+ *     summary: Atualiza Usuário do Id
+ *     description: Atualiza um usário do sistema. 
  *     parameters:
- *       - name: id_usuarios
+ *       - name: id_usuario
  *         in: path
- *         description: Id do usuário para retornar um usuário
+ *         description: Id do usuário
  *         required: true
  *     requestBody:
  *       description:  Exemplo de requestBody de uma atualização de usuário
@@ -103,7 +103,7 @@ router.post("/v1/usuarios", UsuarioController.criaUsuario);
  *       required: true
  *     responses:
  *       200:
- *         description: Retorna 1 usuário com sucesso
+ *         description: Retorna um usuário atualizado com sucesso
  *         content:
  *           application/json:
  *             schema:
@@ -111,20 +111,20 @@ router.post("/v1/usuarios", UsuarioController.criaUsuario);
  *               items:
  *                 $ref: '#/components/schemas/Usuarios'
  *       500:
- *         description: Erro ao retornar usuário.
+ *         description: Erro ao atualizar usuário.
  */
-router.put("/v1/usuarios/:id", UsuarioController.atualizaUsuario);
+router.put("/v1/usuarios/:id_usuario", UsuarioController.atualizaUsuario);
 
 /**
  * @swagger
- * /v1/usuarios/{id_usuarios}:
+ * /v1/usuarios/{id_usuario}:
  *   delete:
 *     tags:
  *      - Usuarios
- *     summary: Retorna um usuário consultando por id
- *     description: Retorna um usuário base do sistema
+ *     summary: Deleta usuário consultando por id
+ *     description: Deletar um usuário registrado pelo ID;
  *     parameters:
- *       - name: id_usuarios
+ *       - name: id_usuario
  *         in: path
  *         description: Id do usuário para retornar um usuário
  *         required: true
@@ -140,6 +140,6 @@ router.put("/v1/usuarios/:id", UsuarioController.atualizaUsuario);
  *       500:
  *         description: Erro ao retornar usuário.
  */
-router.delete("/v1/usuarios/:id", UsuarioController.deletaUsuario);
+router.delete("/v1/usuarios/:id_usuario", UsuarioController.deletaUsuario);
 
 module.exports = router;

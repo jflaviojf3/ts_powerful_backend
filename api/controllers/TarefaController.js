@@ -122,7 +122,7 @@ class TarefaController {
             id_usuarios: Number(id_usuario),
         },
       });
-      formata.criaAuditoriaPonto(
+      formata.criaAuditoriaTarefa(
         `Tarefa Criada| ${umTarefaAtualizada.descricao}`,
         umTarefaAtualizada.data_inicio,
         umTarefaAtualizada.data_fim,

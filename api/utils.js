@@ -27,7 +27,7 @@ static formataData(data) {
 
   static async criaAuditoriaTarefa(descricao, data_inicio, data_fim, id_tarefa ) {
     try {
-      await axios.post('http://localhost:3000/v1/auditorias/tarefa', {
+      await axios.post('http://localhost:3000/v1/auditorias/tarefas', {
         descricao: descricao,
         data_hora_inicio: data_inicio,
         data_hora_fim: data_fim==undefined?null:data_fim,

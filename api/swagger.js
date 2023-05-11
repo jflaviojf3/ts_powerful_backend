@@ -682,6 +682,66 @@ const options = {
             updatedAt: "2023-05-09T12:34:56Z",
           },
         },
+        "EquipesUsuarios": {
+          "type": "object",
+          "properties": {
+            "id_equipes_usuarios": {
+              "type": "integer",
+              "format": "int64",
+              "nullable": false,
+              "readOnly": true
+            },
+            "id_equipes": {
+              "type": "integer",
+              "nullable": false,
+              "readOnly": false,
+              "description": "ID da equipe relacionada",
+              "example": 1
+            },
+            "id_usuarios": {
+              "type": "integer",
+              "nullable": false,
+              "readOnly": false,
+              "description": "ID do usuário relacionado",
+              "example": 1
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time",
+              "nullable": false,
+              "readOnly": true,
+              "description": "Data de criação do registro"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time",
+              "nullable": false,
+              "readOnly": true,
+              "description": "Data de atualização do registro"
+            }
+          },
+          "required": [
+            "id_equipes_usuarios",
+            "id_equipes",
+            "id_usuarios"
+          ],
+          example: [
+            {
+              id_equipes_usuarios: 1,
+              id_equipes: 1,
+              id_usuarios: 1,
+              createdAt: "2023-05-09T12:34:56Z",
+              updatedAt: "2023-05-09T12:34:56Z"
+            },
+            {
+              id_equipes_usuarios: 2,
+              id_equipes: 1,
+              id_usuarios: 2,
+              createdAt: "2023-05-09T12:34:56Z",
+              updatedAt: "2023-05-09T12:34:56Z"
+            }
+          ],
+        },
       },
       requestBody: {
         Usuarios_put_post: {
@@ -806,7 +866,7 @@ const options = {
             "id_propriedade",
             "descricao_propriedade",
             "cod_propriedade",
-            "descricao_codigo",
+            "descricao_codigo"
           ],
           example: {
             id_propriedade: 1,
@@ -862,7 +922,7 @@ const options = {
             descricao_cargo: "Responsável pela equipe de vendas",
             data_inicio: "2022-01-01",
             data_fim: "2022-12-31",
-            cod_categoria: 1,
+            cod_categoria: 1
           },
         },
         Organizacoes_put_post: {
@@ -896,7 +956,7 @@ const options = {
           },
           required: ["nome"],
           example: {
-            nome: "Empresa de Exemplo",
+            nome: "Empresa de Exemplo"
           },
         },
         "Equipes_put_post": {
@@ -948,8 +1008,7 @@ const options = {
             nome: "Equipes de Desenvolvimento Exemplo",
             descricao: "Descrição exemplo para Swagger",
             data_inicio: "2023-05-01",
-            data_inicio: "2023-05-21",
-            id_organizacoes: 1,
+            data_inicio: "2023-05-21"
           },
         },
         "Clientes_put_post": {
@@ -1015,7 +1074,7 @@ const options = {
             data_inicio: "2023-05-01",
             data_fim: "2023-05-21",
             email: "atendimento@pucminas.com.br",
-            cod_prioridade: 5,
+            cod_prioridade: 5
           },
         },
         "Projetos_put_post": {
@@ -1075,9 +1134,8 @@ const options = {
             data_inicio: "2023-05-01",
             data_fim: "2023-05-21",
             duracao_prevista: 3,
-            id_organizacoes: 1,
             id_equipes: 1,
-            id_clientes: 1,
+            id_clientes: 1
           },
         },
         "Tarefas_put_post": {
@@ -1147,7 +1205,7 @@ const options = {
             descricao : "Fazendo atividade do backend",
             data_inicio : "2023-05-07 15:55:35",
             data_fim : "2023-05-07 16:00:23",
-            id_projetos : 1,
+            id_projetos : 1
           },
         },  
         "Pontos_put_post": {
@@ -1196,8 +1254,7 @@ const options = {
           example: {
             situacao: "Entrada",
             hora_ponto: "2023-05-07 10:30:00",
-            descricao: "Entrada Normal",
-            id_usuarios: 1,
+            descricao: "Entrada Normal"
           },
         },
         "Auditorias_put_post": {
@@ -1247,11 +1304,11 @@ const options = {
             "data_hora_inicio"
           ],
           example: {
-            descricao : "Tarefa Editada",
+            descricao : "Tarefa Atualizada|",
             data_hora_inicio : "2023-05-07 15:55:35",
             data_hora_fim : "2023-05-07 16:07:23",
             id_tarefas : 1,
-            id_pontos : null,
+            id_pontos : null
           },
         },
         "Objetivos_put_post": {
@@ -1301,9 +1358,54 @@ const options = {
           ],
           example: {
             descricao: "Finalizando Teste Automatizados",
-            marcado: 0,
-            id_projetos: 1,
+            marcado: 0
           },
+        },
+        "EquipesUsuarios_put_post": {
+          "type": "object",
+          "properties": {
+            "id_equipes_usuarios": {
+              "type": "integer",
+              "format": "int64",
+              "nullable": false,
+              "readOnly": true
+            },
+            "id_equipes": {
+              "type": "integer",
+              "nullable": false,
+              "readOnly": false,
+              "description": "ID da equipe relacionada",
+              "example": 1
+            },
+            "id_usuarios": {
+              "type": "integer",
+              "nullable": false,
+              "readOnly": false,
+              "description": "ID do usuário relacionado",
+              "example": 1
+            },
+            "createdAt": {
+              "type": "string",
+              "format": "date-time",
+              "nullable": false,
+              "readOnly": true,
+              "description": "Data de criação do registro"
+            },
+            "updatedAt": {
+              "type": "string",
+              "format": "date-time",
+              "nullable": false,
+              "readOnly": true,
+              "description": "Data de atualização do registro"
+            }
+          },
+          "required": [
+            "id_usuarios"
+          ],
+          example:
+            {
+              id_usuarios: 1
+            },
         },
       },
       securitySchemes: {
