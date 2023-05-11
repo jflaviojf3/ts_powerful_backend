@@ -1,23 +1,23 @@
-name: 'Deploy API TS_PowerFul'
+name: "Deploy to dokku"
 
-# yamllint disable-line rule:truthy
 on:
   workflow_dispatch:
   push:
-    branches:
-      - master
+    branches: [ master ]
 
 jobs:
-  Deploy:
+  deploy:
+
     runs-on: ubuntu-latest
+
     steps:
-      - name: Cloning repo
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
-      - name: Push to dokku
-        uses: dokku/github-action@v1.4.0
+      - name: "Deploy to dokku"
+        uses: fasetto/dokku-deploy@master
         with:
-          git_remote_url: 'ssh://root@186.202.57.75:22/api-ts-powerful'
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }} 
+          dokku-deploy-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          dokku-host: "186.202.57.75"
+          dokku-app: "api-ts-powerful"
