@@ -21,3 +21,4 @@ jobs:
           dokku-deploy-key: ${{ secrets.SSH_PRIVATE_KEY }}
           dokku-host: "186.202.57.75"
           dokku-app: "api-ts-powerful"
+          dokku-user: "root"
