@@ -7,7 +7,7 @@ module.exports = {
     database: process.env.DATABASE_BANCO,
     host: process.env.HOST_BANCO,
     port: process.env.PORT_BANCO,
-    dialect: "mysql",
+    dialect: process.env.DIALECT_BANCO,
     timezone: "-03:00",
     dialectOptions: {
       dateStrings: true,
