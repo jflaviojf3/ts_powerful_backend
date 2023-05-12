@@ -12,6 +12,10 @@ const options = {
         url: `http://localhost:${process.env.PORT}`,
         description: "Ambiente Local"
       },
+      {
+        url: `http://${process.env.DOMINIO}:${process.env.PORTA_EXTERNO}`,
+        description: "Ambiente Desenvolvimento"
+      },
     ],
     components: {
       schemas: {
