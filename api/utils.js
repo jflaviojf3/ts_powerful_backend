@@ -14,7 +14,7 @@ static formataData(data) {
 
   static async criaAuditoriaPonto(descricao, id_ponto ) {
     try {
-      await axios.post('http://localhost:3000/v1/auditorias/pontos', {
+      await axios.post(`http://localhost:${process.env.PORT}/v1/auditorias/pontos`, {
         descricao: descricao,
         data_hora_inicio: new Date(),
         id_pontos: id_ponto
@@ -27,7 +27,7 @@ static formataData(data) {
 
   static async criaAuditoriaTarefa(descricao, data_inicio, data_fim, id_tarefa ) {
     try {
-      await axios.post('http://localhost:3000/v1/auditorias/tarefas', {
+      await axios.post(`http://localhost:${process.env.PORT}/v1/auditorias/tarefas`, {
         descricao: descricao,
         data_hora_inicio: data_inicio,
         data_hora_fim: data_fim==undefined?null:data_fim,
