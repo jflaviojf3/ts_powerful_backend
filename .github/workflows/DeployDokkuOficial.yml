@@ -20,3 +20,4 @@ jobs:
           git_remote_url: 'ssh://dokku@186.202.57.75:22/api-ts-powerful'
           ssh_host_key: ${{ secrets.SSH_HOST_KEY }}
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          
