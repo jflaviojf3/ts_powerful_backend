@@ -6,21 +6,21 @@ on:
     branches: [ master ]
 
 jobs:
-  Testes:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Execução do Teste
-        run: echo TESTE SUCESSO!
+  #Testes:
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name: Execução do Teste
+  #      run: echo TESTE SUCESSO!
     
-  deploy:
+  Deploy_API:
     runs-on: ubuntu-latest
     steps:
-      - name: Cloning repo
+      - name: Clone Repositorio
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
-      - name: Push to dokku
+      - name: Envio Para Dokku
         uses: dokku/github-action@v1.4.0
         with:
           git_remote_url: 'ssh://dokku@186.202.57.75:22/api-ts-powerful'

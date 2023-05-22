@@ -9,13 +9,13 @@ const options = {
     },
     servers: [
       {
-        url: `http://localhost:${process.env.PORT}`,
-        description: "Ambiente Local"
-      },
-      {
         url: `http://${process.env.DOMINIO}:${process.env.PORTA_EXTERNO}`,
         description: "Ambiente Desenvolvimento"
       },
+      {
+        url: `http://localhost:${process.env.PORT}`,
+        description: "Ambiente Local"
+      }
     ],
     components: {
       schemas: {
@@ -1473,13 +1473,13 @@ const options = {
             },
         },
       },
-      securitySchemes: {
-        bearerAuth: {
-          type: "http",
-          scheme: "bearer",
-          bearerFormat: "JWT",
-        },
-      },
+      // securitySchemes: {
+      //   bearerAuth: {
+      //     type: "http",
+      //     scheme: "bearer",
+      //     bearerFormat: "JWT",
+      //   },
+      // },
     },
   },
   apis: [`${__dirname}/routes/v1/*.js`],
