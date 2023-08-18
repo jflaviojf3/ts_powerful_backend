@@ -5,6 +5,7 @@ const options = require('../../swagger')
 const swaggerSpec = swaggerJSDoc(options);
 
 const usuarios = require('./usuariosRoute')
+const auth = require('./authRoute')
 const parametros = require('./parametrosRoute')
 const cargos = require('./cargosRoute')
 const organizacoes = require('./organizacoesRoute')
@@ -18,6 +19,7 @@ const tarefas = require('./tarefasRoute')
 module.exports = app => {
     app.use(bodyParser.json())
     app.use(usuarios)
+    app.use(auth)
     app.use(parametros)
     app.use(cargos)
     app.use(organizacoes)
