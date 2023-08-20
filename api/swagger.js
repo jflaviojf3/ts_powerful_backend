@@ -807,6 +807,75 @@ const options = {
             }
           ],
         },
+        Auth: {
+          type: "object",
+          properties: {
+            nome: {
+              type: "string",
+            },
+            sobrenome: {
+              type: "string",
+            },
+            email: {
+              type: "string",
+            },
+            ativo: {
+              type: "boolean",
+            },
+            ddd: {
+              type: "integer",
+            },
+            telefone: {
+              type: "integer",
+            },
+            data_nascimento: {
+              type: "string",
+              format: "date",
+            },
+            cpf: {
+              type: "string",
+            },
+            descricao: {
+              type: "string",
+            },
+            foto: {
+              type: "string",
+              format: "byte",
+            },
+            cod_sexo: {
+              type: "integer",
+            },
+            cod_perfil: {
+              type: "integer",
+            },
+            id_cargos: {
+              type: "integer",
+            },
+            id_organizacoes: {
+              type: "integer",
+            }
+          },
+          required: [
+            "email",
+            "senha",
+          ],
+          example: {
+            nome: "Fulano",
+            sobrenome: "de Tal",
+            email: "fulano@example.com",
+            ativo: true,
+            ddd: 11,
+            telefone: 987654321,
+            data_nascimento: "1990-01-01",
+            cpf: "123.456.789-00",
+            descricao: "Descrição do usuário",
+            foto: "AQIDBA==",
+            cod_sexo: 1,
+            cod_perfil: 2,
+            id_cargos: 1,
+            id_organizacoes: 1
+          },
+        },
       },
       requestBody: {
         Usuarios_put_post: {
@@ -1472,6 +1541,26 @@ const options = {
               id_usuarios: 1
             },
         },
+        Auth_put_post: {
+          type: "object",
+          properties: {
+            email: {
+              type: "string",
+            },
+            senha: {
+              type: "string",
+            },
+          },
+          required: [
+            "email",
+            "senha",
+          ],
+          example: {
+            email: "fulano@example.com",
+            senha: "123456"
+          },
+        },
+
       },
       // securitySchemes: {
       //   bearerAuth: {

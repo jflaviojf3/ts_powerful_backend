@@ -12,23 +12,25 @@ const router = Router();
  *     summary: Realiza autenticação de usuario
  *     description: Realiza a autenticação de um usuário cadastrado no sistema
  *     requestBody:
- *       description: Exemplo de requestBody de um novo usuário
+ *       description: Exemplo de requestBody para autenticação
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/requestBody/Usuarios_put_post'
+ *             $ref: '#/components/requestBody/Auth_put_post'
  *       required: true
  *     responses:
  *       200:
- *         description: Retorna o usuário Inserido com sucesso
+ *         description: Retorna os dados de usuário com sucesso
  *         content:
  *           application/json:
  *             schema:
  *               type: array
  *               items:
- *                 $ref: '#/components/schemas/Usuarios'
+ *                 $ref: '#/components/schemas/Auth'
+ *       401:
+ *         description: Erro de autenticação, usuário não autenticado.
  *       500:
- *         description: Erro ao Inserir usuário.
+ *         description: Erro de conexão com o servidor.
  */
 router.post("/v1/auth", AuthController.fazerLogin);
 

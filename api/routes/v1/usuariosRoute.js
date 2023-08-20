@@ -59,7 +59,7 @@ router.get("/v1/usuarios/:id_usuario", UsuarioController.pegaUmUsuario);
  *     tags:
  *      - Usuarios
  *     summary: Insere um Novo Usuário
- *     description: RInserir um novo Usuário na base do sistema
+ *     description: Inserir um novo Usuário na base do sistema
  *     requestBody:
  *       description: Exemplo de requestBody de um novo usuário
  *       content:
