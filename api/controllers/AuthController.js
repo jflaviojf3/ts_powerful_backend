@@ -23,15 +23,15 @@ class AuthController {
 //   }
 
   static async fazerLogin(req, res) {
-    const {email} = req.body;
-    const {senha} = req.body;
+    const {email, senha} = req.body;
     var resultado = '';
     try {
       const usuario = await database.Usuarios.findOne({
+        attributes: { exclude: ['id_usuarios', 'senha', 'createdAt', 'updatedAt', 'deletedAt'] },
         where: { email: `${email}`, senha: `${senha}` },
       });
       if (usuario == null) {
-        resultado = res.status(401).json("Usuario ou Senha Invalido")
+        resultado = res.status(401).json({message:"Usuario ou Senha Invalido"})
       } else {
         resultado = res.status(200).json(usuario);
       }
