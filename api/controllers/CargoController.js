@@ -53,7 +53,7 @@ class CargoController {
     const { id_cargo } = req.params;
     try {
       await database.Cargos.destroy({ where: { id_cargos: Number(id_cargo) } });
-      return res.status(200).json({ mensagem: `id ${id_cargo} deletado` });
+      return res.status(200).json({ mensagem: `Id cargo ${id_cargo} deletado` });
     } catch (error) {
       return res.status(500).json(error.message);
     }

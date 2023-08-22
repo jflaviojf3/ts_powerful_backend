@@ -137,16 +137,17 @@ class TarefaController {
   static async deletaTarefa(req, res) {
     const { id_usuario, id_tarefa, cod_entrada } = req.params;
     try {
+      console.log (typeof id_usuario +" - "+ typeof id_tarefa + " - "+ typeof cod_entrada)
       await database.Tarefas.destroy({
         where: { 
-            id_tarefas: Number(id_tarefa),
-            entrada: Number(cod_entrada),
-            id_usuarios: Number(id_usuario),
+            id_tarefas: String(id_tarefa),
+            entrada: String(cod_entrada),
+            id_usuarios: String(id_usuario),
          },
       });
       return res
         .status(200)
-        .json({ mensagem: `Id tarefa ${id_tarefas} deletado` });
+        .json({ mensagem: `Id tarefa ${id_tarefa} deletado` });
     } catch (error) {
       return res.status(500).json(error.message);
     }

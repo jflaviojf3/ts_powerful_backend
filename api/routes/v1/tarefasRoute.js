@@ -276,7 +276,7 @@ router.put('/v1/usuarios/:id_usuario/tarefa/:id_tarefa/entrada/:cod_entrada', Ta
  *       500:
  *         description: Erro ao Deletar Tarefa.
  */
-router.delete('/v1/usuarios/:id_usuario/pontos/:id_tarefa/entrada/:cod_entrada', TarefaController.deletaTarefa)
+router.delete('/v1/usuarios/:id_usuario/tarefa/:id_tarefa/entrada/:cod_entrada', TarefaController.deletaTarefa)
 
 
 module.exports = router
