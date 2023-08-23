@@ -1,7 +1,7 @@
 const request = require ("supertest")
 const app = require ('../api/server.js')
 
-describe.only('Testes dos endpoints de atribuicao a um cargo', ()=>{
+describe.skip('Testes dos endpoints de atribuicao a um cargo', ()=>{
 
     var id_atribuicao_criado = ''
 

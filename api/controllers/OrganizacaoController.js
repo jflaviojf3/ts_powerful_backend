@@ -46,7 +46,7 @@ class OrganizacaoController {
         const {id_organizacao} = req.params
         try {
             await database.Organizacoes.destroy({ where: {id_organizacoes:Number(id_organizacao)}})
-            return res.status(200).json({mensagem: `id ${id_organizacao} deletado`})
+            return res.status(200).json({mensagem: `Id Organização ${id_organizacao} deletado`})
         } catch (error) {
             return res.status(500).json(error.message)
         }
