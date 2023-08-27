@@ -1,7 +1,7 @@
 const request = require ("supertest")
 const app = require ('../api/server.js')
 
-describe.skip('Testes dos endpoints de equips', ()=>{
+describe('Testes dos endpoints de equips', ()=>{
 
     var id_equipes_criado = ''
     var id_equipeUsuario1_criado = ''

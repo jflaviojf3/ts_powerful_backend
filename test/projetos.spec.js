@@ -1,7 +1,7 @@
 const request = require ("supertest")
 const app = require ('../api/server.js')
 
-describe.skip('Testes dos endpoints de projetos', ()=>{
+describe('Testes dos endpoints de projetos', ()=>{
 
     var id_projetos_criado = ''
 

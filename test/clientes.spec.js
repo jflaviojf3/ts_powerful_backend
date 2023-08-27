@@ -1,7 +1,7 @@
 const request = require ("supertest")
 const app = require ('../api/server.js')
 
-describe.only('Testes dos endpoints de clientes', ()=>{
+describe('Testes dos endpoints de clientes', ()=>{
 
     var id_cliente_criado = ''
 

@@ -1,7 +1,7 @@
 const request = require ("supertest")
 const app = require ('../api/server.js')
 
-describe.skip ('Testes dos endpoints de usuarios', ()=>{
+describe('Testes dos endpoints de usuarios', ()=>{
 
     var id_update_criado = ''
 
@@ -30,14 +30,12 @@ describe.skip ('Testes dos endpoints de usuarios', ()=>{
             "data_nascimento": expect.any(String),
             "cpf": expect.any(String),
             "descricao": expect.any(String),
-            //"foto": expect.anything(),
             "cod_sexo": expect.any(Number),
             "cod_perfil": expect.any(Number),
             "id_cargos": expect.any(Number),
             "id_organizacoes": expect.any(Number),
             "createdAt": expect.any(String),
             "updatedAt": expect.any(String),
-            //"deletedAt": expect.any(null),
           }),
         );
     })
@@ -94,14 +92,8 @@ describe.skip ('Testes dos endpoints de usuarios', ()=>{
             "data_nascimento": expect.any(String),
             "cpf": expect.any(String),
             "descricao": expect.any(String),
-            //"foto": expect.anything(),
-            //"cod_sexo": expect.any(Number),
-            //"cod_perfil": expect.any(Number),
-            //"id_cargos": expect.any(Number),
-            //"id_organizacoes": expect.any(Number),
             "createdAt": expect.any(String),
             "updatedAt": expect.any(String),
-            //"deletedAt": expect.any(null),
           }),
         );
     })

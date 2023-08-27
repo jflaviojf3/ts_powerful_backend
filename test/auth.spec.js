@@ -1,7 +1,7 @@
 const request = require ("supertest")
 const app = require ('../api/server.js')
 
-describe.skip ('Testes dos endpoints de autenticação', ()=>{
+describe('Testes dos endpoints de autenticação', ()=>{
 
     it('Teste de login utilizando dados corretos, deve retornar 200', async ()=>{
         const res = await request(app)

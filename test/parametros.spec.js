@@ -1,7 +1,7 @@
 const request = require ("supertest")
 const app = require ('../api/server.js')
 
-describe.skip('Testes dos endpoints de parametros', ()=>{
+describe('Testes dos endpoints de parametros', ()=>{
 
     var id_tabGenerica_criada = ''
 

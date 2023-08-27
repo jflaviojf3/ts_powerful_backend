@@ -1,7 +1,7 @@
 const request = require ("supertest")
 const app = require ('../api/server.js')
 
-describe.skip('Testes dos endpoints de tarefas do usuario', ()=>{
+describe('Testes dos endpoints de tarefas do usuario', ()=>{
 
     var id_tarefas_criado = ''
 
@@ -38,7 +38,6 @@ describe.skip('Testes dos endpoints de tarefas do usuario', ()=>{
             "id_projetos": expect.any(Number),
             "id_usuarios": expect.any(Number),
             "entrada": expect.any(Number),
-            //"data_fim": expect.any(String),
             "data_inicio": expect.any(String),
             "descricao": expect.any(String),
             "createdAt": expect.any(String),
@@ -59,7 +58,6 @@ describe.skip('Testes dos endpoints de tarefas do usuario', ()=>{
             "id_projetos": expect.any(Number),
             "id_usuarios": expect.any(Number),
             "entrada": expect.any(Number),
-            //"data_fim": expect.any(String),
             "data_inicio": expect.any(String),
             "descricao": expect.any(String),
             "createdAt": expect.any(String),
@@ -127,7 +125,6 @@ describe.skip('Testes dos endpoints de tarefas do usuario', ()=>{
             "id_projetos": expect.any(String),
             "id_usuarios": expect.any(String),
             "entrada": expect.any(Number),
-            //"data_fim": expect.any(String),
             "data_inicio": expect.any(String),
             "descricao": expect.any(String),
             "createdAt": expect.any(String),
@@ -156,7 +153,6 @@ describe.skip('Testes dos endpoints de tarefas do usuario', ()=>{
             "id_projetos": expect.any(Number),
             "id_usuarios": expect.any(Number),
             "entrada": expect.any(Number),
-            //"data_fim": expect.any(String),
             "data_inicio": expect.any(String),
             "descricao": expect.any(String),
             "createdAt": expect.any(String),
