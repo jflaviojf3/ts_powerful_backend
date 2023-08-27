@@ -9,13 +9,9 @@ jobs:
   Testes:
     runs-on: ubuntu-latest
     steps:
-      - name: Atualizando Envs
-        run: echo "${{ vars.ENV_DEVELOPMENT }}" > .env
       - uses: actions/checkout@v3.6.0
       - name: Instalação dos pacotes
-        run: npm ci
-      - name: Execução Build
-        run: npm run dev
+        run: npm i
       - name: Execução dos Testes
         run: npm test
     
