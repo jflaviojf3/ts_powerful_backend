@@ -6,11 +6,14 @@ on:
     branches: [ master ]
 
 jobs:
-  #Testes:
-  #  runs-on: ubuntu-latest
-  #  steps:
-  #    - name: Execução do Teste
-  #      run: echo TESTE SUCESSO!
+  Testes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execução dos Testes
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npm run dev
+      - run: npm test
     
   Deploy_API:
     runs-on: ubuntu-latest
