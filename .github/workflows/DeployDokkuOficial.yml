@@ -6,19 +6,8 @@ on:
     branches: [ master ]
 
 jobs:
-  Testes:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - run: npm i
-      - run: npm test
-    
   Deploy_API:
     runs-on: ubuntu-latest
-    needs: Testes
     steps:
       - name: Clone Repositorio
         uses: actions/checkout@v2
@@ -31,3 +20,15 @@ jobs:
           git_remote_url: 'ssh://dokku@186.202.57.75:22/api-ts-powerful'
           #ssh_host_key: ${{ secrets.SSH_HOST_KEY }}
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+  Testes:
+    runs-on: ubuntu-latest
+    needs: Deploy_API
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm ci
+      - run: echo "${vars.SERVER_PROD}" > .env
+      - run: npm test
