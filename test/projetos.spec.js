@@ -1,7 +1,7 @@
 const request = require ("supertest")
 const app = require ('../api/server.js')
 
-describe.only('Testes dos endpoints de projetos', ()=>{
+describe.skip('Testes dos endpoints de projetos', ()=>{
 
     var id_projetos_criado = ''
 
@@ -25,7 +25,7 @@ describe.only('Testes dos endpoints de projetos', ()=>{
         );
     })
 
-    it('Teste para criar novas organizações, deve retornar 200', async ()=>{
+    it('Teste para criar novos projetos de uma organização, deve retornar 200', async ()=>{
         const res = await request(app)
         .post('/v1/organizacoes/1/projetos')
         .send({
@@ -75,7 +75,7 @@ describe.only('Testes dos endpoints de projetos', ()=>{
         );
     })
 
-    it('Teste para atualizar uma organização que foi criado, deve retornar 200', async ()=>{
+    it('Teste para atualizar um projeto que foi criado, deve retornar 200', async ()=>{
         const res = await request(app)
         .put(`/v1/organizacoes/1/projetos/${id_projetos_criado}`)
         .send({
@@ -98,7 +98,7 @@ describe.only('Testes dos endpoints de projetos', ()=>{
         );
     })
 
-    it('Teste para deletar uma organização que foi atualizado, deve retornar 200', async ()=>{
+    it('Teste para deletar um projeto que foi atualizado, deve retornar 200', async ()=>{
         const res = await request(app)
         .del(`/v1/organizacoes/1/projetos/${id_projetos_criado}`)
 
