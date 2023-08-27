@@ -9,14 +9,15 @@ jobs:
   Testes:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3.6.0
       - name: Execução dos Testes
-      - uses: actions/checkout@v2
       - run: npm ci
       - run: npm run dev
       - run: npm test
     
   Deploy_API:
     runs-on: ubuntu-latest
+    needs: Testes
     steps:
       - name: Clone Repositorio
         uses: actions/checkout@v2
