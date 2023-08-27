@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Atualizando Envs
-        run: echo "${{ secrets.ENVDEV_VARS }}" > .env
+        run: echo "${{ vars.ENV_DEVELOPMENT }}" > .env
       - uses: actions/checkout@v3.6.0
       - name: Instalação dos pacotes
         run: npm ci
