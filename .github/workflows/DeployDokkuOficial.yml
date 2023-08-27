@@ -9,11 +9,12 @@ jobs:
   Testes:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.6.0
-      - name: Instalação dos pacotes
-        run: npm i
-      - name: Execução dos Testes
-        run: npm test
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm ci
+      - run: npm test
     
   Deploy_API:
     runs-on: ubuntu-latest
