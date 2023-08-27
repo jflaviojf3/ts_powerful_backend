@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3.6.0
       - name: Execução dos Testes
-      - run: npm ci
+        run: npm ci
       - run: npm run dev
       - run: npm test
     
