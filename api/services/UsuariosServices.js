@@ -1,5 +1,6 @@
 const Services = require('./Services')
 const database = require('../models')
+const {hash} = require('bcryptjs')
 
 class UsuariosServices extends Services {
     constructor(){
@@ -14,25 +15,35 @@ class UsuariosServices extends Services {
     async pegaTodosOsUsuarios(where = {}){
         return database[this.nomeDoModelo]
         //.scope('todos')
-        .findAll({where: {...where}})
+        .findAll({attributes: { exclude: ['id_usuarios', 'senha', 'createdAt', 'updatedAt', 'deletedAt'] }, where: {...where}})
     }
 
     async atualizaUmUsuario(dadosAtualizados, where, transacao={}){
         return database[this.nomeDoModelo]
-        .update(dadosAtualizados, {where: { id_usuarios: where }}, transacao)
+        .update(dadosAtualizados, {attributes: { exclude: ['id_usuarios', 'senha', 'createdAt', 'updatedAt', 'deletedAt'] }, where: { id_usuarios: where }}, transacao)
     }
 
     async pegaUmUsuario(where){
-        return database[this.nomeDoModelo].findOne({
+        return database[this.nomeDoModelo].findOne({attributes: { exclude: ['id_usuarios', 'senha', 'createdAt', 'updatedAt', 'deletedAt'] },
             where: { id_usuarios: where },})
     }
 
     async criaUsuario(dados){
-        return database[this.nomeDoModelo].create(dados)
+        const usuarioExiste = await this.pegaUmRegistro({attributes: { exclude: ['id_usuarios', 'senha', 'createdAt', 'updatedAt', 'deletedAt'] }, where: {
+            email: dados.email
+        }})
+
+        if (usuarioExiste){
+            throw new Error('Email ja cadastrado')
+        }
+
+        const senha = await hash(dados.senha, 6)
+        dados = {...dados, senha}
+        return  database[this.nomeDoModelo].create(dados)
     }
 
     async deletaUsuario(where){
-        return database[this.nomeDoModelo].destroy({
+        return database[this.nomeDoModelo].destroy({attributes: { exclude: ['id_usuarios', 'senha', 'createdAt', 'updatedAt', 'deletedAt'] },
             where: { id_usuarios: where },
           })
     }

@@ -1,6 +1,7 @@
 const {UsuariosServices} = require('../services')
 const usuariosServices = new UsuariosServices('Usuarios')
 
+
 class UsuarioController {
   static async pegaTodosUsuarios(req, res) {
     try {
@@ -24,8 +25,10 @@ class UsuarioController {
   static async criaUsuario(req, res) {
     const novoUsuario = req.body;
     try {
-      const umNovoUsuarioCriado = await usuariosServices.criaUsuario(novoUsuario);
-      return res.status(200).json(umNovoUsuarioCriado);
+      const umNovoUsuarioCriado = { ...await usuariosServices.criaUsuario(novoUsuario)};
+      delete umNovoUsuarioCriado.dataValues.senha
+      
+      return res.status(200).json(umNovoUsuarioCriado.dataValues);
     } catch (error) {
       return res.status(500).json(error.message);
     }
