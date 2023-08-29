@@ -1,6 +1,8 @@
 const axios = require("axios");
 
 class Utils {
+
+
   static formataData(data) {
     const ano = data.slice(0, 4);
     const mes = data.slice(4, 6);
@@ -13,9 +15,15 @@ class Utils {
 
   static async criaAuditoriaPonto(descricao, id_ponto) {
     let res;
+    let app;
+    if (process.env.SERVER_PROD) {
+      app = process.env.SERVER_PROD
+  } else {
+      app = `http://localhost:${process.env.PORT}`
+  }
     try {
       res = await axios.post(
-        `http://localhost:${process.env.PORT}/v1/auditorias/pontos`,
+        `${app}/v1/auditorias/pontos`,
         {
           descricao: descricao,
           data_hora_inicio: new Date(),
@@ -39,10 +47,17 @@ class Utils {
     data_fim,
     id_tarefa
   ) {
+
     let res;
+    let app;
+    if (process.env.SERVER_PROD) {
+      app = process.env.SERVER_PROD
+  } else {
+      app = `http://localhost:${process.env.PORT}`
+  }
     try {
       res = await axios.post(
-        `http://localhost:${process.env.PORT}/v1/auditorias/tarefas`,
+        `${app}/v1/auditorias/tarefas`,
         {
           descricao: descricao,
           data_hora_inicio: data_inicio,
@@ -62,9 +77,15 @@ class Utils {
   }
 
   static async fazerLogin() {
+    let app;
+    if (process.env.SERVER_PROD) {
+      app = process.env.SERVER_PROD
+  } else {
+      app = `http://localhost:${process.env.PORT}`
+  }
     try {
       const res = await axios.post(
-        `http://localhost:${process.env.PORT}/v1/auth`,
+        `${app}/v1/auth`,
         {
           email: "jflaviojf3@gmail.com",
           senha: "admin12345678",
