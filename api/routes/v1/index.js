@@ -18,8 +18,9 @@ const tarefas = require('./tarefasRoute')
 
 module.exports = app => {
     app.use(bodyParser.json())
-    app.use(usuarios)
+    app.use(auditorias)
     app.use(auth)
+    app.use(usuarios)
     app.use(parametros)
     app.use(cargos)
     app.use(organizacoes)
@@ -27,7 +28,6 @@ module.exports = app => {
     app.use(projetos)
     app.use(equipes)
     app.use(pontos)
-    app.use(auditorias)
     app.use(tarefas)
     
     app.use('/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));

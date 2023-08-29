@@ -15,8 +15,7 @@ class AuthServices extends Services {
             attributes: { exclude: ['createdAt', 'updatedAt', 'deletedAt'] },
             where: { email: dados.email },
           })
-        
-          console.log( usuario)
+          
           if (!usuario){
             throw new Error('Usuario não cadastrado')
           }
@@ -27,14 +26,14 @@ class AuthServices extends Services {
             throw new Error('Usuario ou senha invalido')
           }
 
-          const acessToken = sign({
+          const token = sign({
             id: usuario.id_usuarios,
             email: usuario.email
           }, jsonScret.secret, {
             expiresIn: 86400
           })
         
-        return { acessToken } 
+        return { token } 
     }
 
 }
