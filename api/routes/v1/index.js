@@ -18,6 +18,8 @@ const tarefas = require('./tarefasRoute')
 
 module.exports = app => {
     app.use(bodyParser.json())
+    app.use('/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+    app.get('/', (req, res) => res.redirect('/v1/api-docs'))
     app.use(auditorias)
     app.use(auth)
     app.use(usuarios)
@@ -30,8 +32,6 @@ module.exports = app => {
     app.use(pontos)
     app.use(tarefas)
     
-    app.use('/v1/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-    app.get('/', (req, res) => res.redirect('/v1/api-docs'))
 
 }

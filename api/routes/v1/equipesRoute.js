@@ -9,6 +9,8 @@ const router = Router()
  * @swagger
  * /v1/organizacoes/{id_organizacao}/equipes:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Equipes
  *     summary: Retorna lista de Equipes
@@ -36,6 +38,8 @@ router.get('/v1/organizacoes/:id_organizacao/equipes', EquipeController.pegaToda
  * @swagger
  * /v1/organizacoes/{id_organizacao}/equipes/{id_equipe}:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Equipes
  *     summary: Retorna um Equipe da organização
@@ -67,6 +71,8 @@ router.get('/v1/organizacoes/:id_organizacao/equipes/:id_equipe', EquipeControll
  * @swagger
  * /v1/organizacoes/{id_organizacao}/equipes:
  *   post:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Equipes
  *     summary: Insere uma nova Equipe.
@@ -101,6 +107,8 @@ router.post('/v1/organizacoes/:id_organizacao/equipes', EquipeController.criaEqu
  * @swagger
  * /v1/organizacoes/{id_organizacao}/equipes/{id_equipe}:
  *   put:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Equipes
  *     summary: Atualiza uma Equipe.
@@ -110,7 +118,7 @@ router.post('/v1/organizacoes/:id_organizacao/equipes', EquipeController.criaEqu
  *         in: path
  *         description: Id da organização
  *         required: true
-*       - name: id_equipe
+ *       - name: id_equipe
  *         in: path
  *         description: Id da Equipe
  *         required: true
@@ -139,6 +147,8 @@ router.put('/v1/organizacoes/:id_organizacao/equipes/:id_equipe', EquipeControll
  * @swagger
  * /v1/organizacoes/{id_organizacao}/equipes/{id_equipe}:
  *   delete:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Equipes
  *     summary: Deleta uma Equipe.
@@ -171,6 +181,8 @@ router.delete('/v1/organizacoes/:id_organizacao/equipes/:id_equipe', EquipeContr
  * @swagger
  * /v1/equipes/{id_equipe}/usuarios:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Equipes
  *     summary: Retorna lista de Usuários da Equipe
@@ -198,6 +210,8 @@ router.get('/v1/equipes/:id_equipe/usuarios', EquipeController.pegaEquipeUsuario
  * @swagger
  * /v1/equipes/{id_equipe}/usuarios:
  *   post:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Equipes
  *     summary: Insere um Novo Usuário a Equipe.
@@ -232,6 +246,8 @@ router.post('/v1/equipes/:id_equipe/usuarios', EquipeController.criaEquipeUsuari
  * @swagger
  * /v1/equipes/{id_equipe}/usuarios/{id_usuario}:
  *   delete:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Equipes
  *     summary: Deleta Usuário de uma Equipe.

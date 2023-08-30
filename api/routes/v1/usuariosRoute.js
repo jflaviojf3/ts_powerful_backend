@@ -10,6 +10,8 @@ router.use(autenticado)
  * @swagger
  * /v1/usuarios:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Usuarios
  *     summary: Retorna lista de todos os usuários
@@ -32,7 +34,9 @@ router.get("/v1/usuarios", UsuarioController.pegaTodosUsuarios);
  * @swagger
  * /v1/usuarios/{id_usuario}:
  *   get:
-*     tags:
+ *     security:
+ *      - bearerAuth: []
+ *     tags:
  *      - Usuarios
  *     summary: Retorna um usuário consultando por id
  *     description: Retorna um usuário base do sistema
@@ -59,6 +63,8 @@ router.get("/v1/usuarios/:id_usuario", UsuarioController.pegaUmUsuario);
  * @swagger
  * /v1/usuarios/:
  *   post:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Usuarios
  *     summary: Insere um Novo Usuário
@@ -88,7 +94,9 @@ router.post("/v1/usuarios", UsuarioController.criaUsuario);
  * @swagger
  * /v1/usuarios/{id_usuario}:
  *   put:
-*     tags:
+ *     security:
+ *      - bearerAuth: []
+ *     tags:
  *      - Usuarios
  *     summary: Atualiza Usuário do Id
  *     description: Atualiza um usário do sistema. 
@@ -122,7 +130,9 @@ router.put("/v1/usuarios/:id_usuario", UsuarioController.atualizaUsuario);
  * @swagger
  * /v1/usuarios/{id_usuario}:
  *   delete:
-*     tags:
+ *     security:
+ *      - bearerAuth: []
+ *     tags:
  *      - Usuarios
  *     summary: Deleta usuário consultando por id
  *     description: Deletar um usuário registrado pelo ID;

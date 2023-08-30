@@ -1562,13 +1562,13 @@ const options = {
         },
 
       },
-      // securitySchemes: {
-      //   bearerAuth: {
-      //     type: "http",
-      //     scheme: "bearer",
-      //     bearerFormat: "JWT",
-      //   },
-      // },
+       securitySchemes: {
+         bearerAuth: {
+           type: "http",
+           scheme: "bearer",
+           bearerFormat: "JWT",
+         },
+       },
     },
   },
   apis: [`${__dirname}/routes/v1/*.js`],

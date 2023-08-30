@@ -7,6 +7,8 @@ const router = Router()
  * @swagger
  * /v1/usuarios/{id_usuario}/pontos:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Pontos
  *     summary: Retorna lista de todos os Pontos do usuário
@@ -34,6 +36,8 @@ router.get('/v1/usuarios/:id_usuario/pontos', PontoController.pegaTodosPontosUsu
  * @swagger
  * /v1/usuarios/{id_usuario}/pontos/{id_ponto}:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Pontos
  *     summary: Retorna uma Pontos do usuário
@@ -65,6 +69,8 @@ router.get('/v1/usuarios/:id_usuario/pontos/:id_ponto', PontoController.pegaUmPo
  * @swagger
  * /v1/usuarios/{id_usuario}/pontosDia/{dia}:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Pontos
  *     summary: Retorna lista de pontos incluidas no dia.
@@ -97,6 +103,8 @@ router.get('/v1/usuarios/:id_usuario/pontosDia/:dia', PontoController.pegaPontoD
  * @swagger
  * /v1/usuarios/{id_usuario}/pontoInicio/{data_inicio}/pontoFim/{data_fim}:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Pontos
  *     summary: Retorna lista de pontos incluidas no periodo.
@@ -134,6 +142,8 @@ router.get('/v1/usuarios/:id_usuario/pontoInicio/:data_inicio/pontoFim/:data_fim
  * @swagger
  * /v1/usuarios/{id_usuario}/pontos:
  *   post:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Pontos
  *     summary: Insere um novo Ponto.
@@ -168,6 +178,8 @@ router.post('/v1/usuarios/:id_usuario/pontos', PontoController.criaPonto)
  * @swagger
  * /v1/usuarios/{id_usuario}/pontos/{id_ponto}:
  *   put:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Pontos
  *     summary: Atualiza uma Ponto.
@@ -206,6 +218,8 @@ router.put('/v1/usuarios/:id_usuario/pontos/:id_ponto', PontoController.atualiza
  * @swagger
  * /v1/usuarios/{id_usuario}/pontos/{id_ponto}:
  *   delete:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Pontos
  *     summary: Deleta uma Ponto.

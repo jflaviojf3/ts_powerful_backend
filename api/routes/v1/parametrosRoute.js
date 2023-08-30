@@ -7,6 +7,8 @@ const router = Router()
  * @swagger
  * /v1/parametros:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Parametros
  *     summary: Retorna lista de Parametros
@@ -29,6 +31,8 @@ router.get('/v1/parametros', ParametroController.pegaTodosParametros)
  * @swagger
  * /v1/parametros/propriedade/{id_propriedade}:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Parametros
  *     summary: Retorna Lista Propriedade
@@ -56,6 +60,8 @@ router.get('/v1/parametros/propriedade/:id_propriedade', ParametroController.peg
  * @swagger
  * /v1/parametros/{id_param}:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Parametros
  *     summary: Retorna um Parametro
@@ -83,6 +89,8 @@ router.get('/v1/parametros/:id_param', ParametroController.pegaUmParametro)
  * @swagger
  * /v1/parametros:
  *   post:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Parametros
  *     summary: Insere um novo Parametro.
@@ -112,6 +120,8 @@ router.post('/v1/parametros', ParametroController.criaParametro)
  * @swagger
  * /v1/parametros/{id_param}:
  *   put:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Parametros
  *     summary: Atualiza um Parametro.
@@ -146,6 +156,8 @@ router.put('/v1/parametros/:id_param', ParametroController.atualizaParametro)
  * @swagger
  * /v1/parametros/{id_param}:
  *   delete:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Parametros
  *     summary: Deleta um Parametro.

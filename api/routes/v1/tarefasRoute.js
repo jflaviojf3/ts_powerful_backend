@@ -7,6 +7,8 @@ const router = Router()
  * @swagger
  * /v1/usuarios/{id_usuario}/tarefa:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Tarefas
  *     summary: Retorna lista de todos as Tarefas do usuário
@@ -34,6 +36,8 @@ router.get('/v1/usuarios/:id_usuario/tarefa', TarefaController.pegaTodasTarefasU
  * @swagger
  * /v1/usuarios/{id_usuario}/tarefa/{id_tarefa}:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Tarefas
  *     summary: Retorna uma Tarefas do usuário
@@ -65,6 +69,8 @@ router.get('/v1/usuarios/:id_usuario/tarefa/:id_tarefa', TarefaController.pegaUm
  * @swagger
  * /v1/usuarios/{id_usuario}/tarefaDia/{dia}:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Tarefas
  *     summary: Retorna lista de tarefas incluidas no dia.
@@ -97,6 +103,8 @@ router.get('/v1/usuarios/:id_usuario/tarefaDia/:dia', TarefaController.pegaTaref
  * @swagger
  * /v1/usuarios/{id_usuario}/tarefaInicio/{data_inicio}/tarefaFim/{data_fim}:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Tarefas
  *     summary: Retorna lista de tarefas incluidas no periodo.
@@ -134,6 +142,8 @@ router.get('/v1/usuarios/:id_usuario/tarefaInicio/:data_inicio/tarefaFim/:data_f
  * @swagger
  * /v1/projeto/{id_projeto}/tarefaInicio/{data_inicio}/tarefaFim/{data_fim}:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Tarefas
  *     summary: Retorna lista de tarefas incluidas no periodo relacionado a um projeto.
@@ -171,6 +181,8 @@ router.get('/v1/projeto/:id_projeto/tarefaInicio/:data_inicio/tarefaFim/:data_fi
  * @swagger
  * /v1/usuarios/{id_usuario}/tarefa:
  *   post:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Tarefas
  *     summary: Insere uma nova Tarefa.
@@ -205,6 +217,8 @@ router.post('/v1/usuarios/:id_usuario/tarefa', TarefaController.criaTarefa)
  * @swagger
  * /v1/usuarios/{id_usuario}/tarefa/{id_tarefa}/entrada/{cod_entrada}:
  *   put:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Tarefas
  *     summary: Atualiza uma Tarefa.
@@ -247,6 +261,8 @@ router.put('/v1/usuarios/:id_usuario/tarefa/:id_tarefa/entrada/:cod_entrada', Ta
  * @swagger
  * /v1/usuarios/{id_usuario}/tarefa/{id_tarefa}/entrada/{cod_entrada}:
  *   delete:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Tarefas
  *     summary: Deleta uma Tarefa.

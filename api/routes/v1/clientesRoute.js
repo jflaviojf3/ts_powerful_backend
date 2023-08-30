@@ -9,6 +9,8 @@ const router = Router()
  * @swagger
  * /v1/clientes:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Clientes
  *     summary: Retorna lista de Clientes
@@ -31,6 +33,8 @@ router.get('/v1/clientes', ClienteController.pegaTodosClientes)
  * @swagger
  * /v1/clientes/{id_cliente}:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Clientes
  *     summary: Retorna um Cliente
@@ -58,6 +62,8 @@ router.get('/v1/clientes/:id_cliente', ClienteController.pegaUmCliente)
  * @swagger
  * /v1/clientes:
  *   post:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Clientes
  *     summary: Insere um novo Cliente.
@@ -87,6 +93,8 @@ router.post('/v1/clientes', ClienteController.criaCliente)
  * @swagger
  * /v1/clientes/{id_cliente}:
  *   put:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Clientes
  *     summary: Atualiza um Cliente.
@@ -121,6 +129,8 @@ router.put('/v1/clientes/:id_cliente', ClienteController.atualizaCliente)
  * @swagger
  * /v1/clientes/{id_cliente}:
  *   delete:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Clientes
  *     summary: Deleta um Cliente.

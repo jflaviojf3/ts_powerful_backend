@@ -9,6 +9,8 @@ const router = Router()
  * @swagger
  * /v1/organizacoes/{id_organizacao}/projetos:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Projetos
  *     summary: Retorna lista de Projetos
@@ -36,6 +38,8 @@ router.get('/v1/organizacoes/:id_organizacao/projetos', ProjetoController.pegaTo
  * @swagger
  * /v1/organizacoes/{id_organizacao}/projetos/{id_projeto}:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Projetos
  *     summary: Retorna um projeto da organização
@@ -67,6 +71,8 @@ router.get('/v1/organizacoes/:id_organizacao/projetos/:id_projeto', ProjetoContr
  * @swagger
  * /v1/organizacoes/{id_organizacao}/projetos:
  *   post:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Projetos
  *     summary: Insere um novo projeto.
@@ -101,6 +107,8 @@ router.post('/v1/organizacoes/:id_organizacao/projetos', ProjetoController.criaP
  * @swagger
  * /v1/organizacoes/{id_organizacao}/projetos/{id_projeto}:
  *   put:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Projetos
  *     summary: Atualiza um Projeto.
@@ -139,6 +147,8 @@ router.put('/v1/organizacoes/:id_organizacao/projetos/:id_projeto', ProjetoContr
  * @swagger
  * /v1/organizacoes/{id_organizacao}/projetos/{id_projeto}:
  *   delete:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Projetos
  *     summary: Deleta um Projeto.
@@ -173,6 +183,8 @@ router.delete('/v1/organizacoes/:id_organizacao/projetos/:id_projeto', ProjetoCo
  * @swagger
  * /v1/projetos/{id_projeto}/objetivos:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Objetivos
  *     summary: Retorna lista de Objetivos
@@ -200,6 +212,8 @@ router.get('/v1/projetos/:id_projeto/objetivos', ProjetoController.pegaTodosObje
  * @swagger
  * /v1/projetos/{id_projeto}/objetivos:
  *   post:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Objetivos
  *     summary: Insere uma novo objetivo.
@@ -234,6 +248,8 @@ router.post('/v1/projetos/:id_projeto/objetivos', ProjetoController.criaObjetivo
  * @swagger
  * /v1/projetos/{id_projeto}/objetivos/{id_objetivo}:
  *   put:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Objetivos
  *     summary: Atualiza um Objetivo.
@@ -272,6 +288,8 @@ router.put('/v1/projetos/:id_projeto/objetivos/:id_objetivo', ProjetoController.
  * @swagger
  * /v1/projetos/{id_projeto}/objetivos/{id_objetivo}:
  *   delete:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Objetivos
  *     summary: Deleta Objetivo de um Projeto.

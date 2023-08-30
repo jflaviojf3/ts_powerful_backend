@@ -7,6 +7,8 @@ const router = Router()
  * @swagger
  * /v1/auditorias:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Auditorias
  *     summary: Retorna lista de Auditorias
@@ -29,6 +31,8 @@ router.get('/v1/auditorias', AuditoriaController.pegaTodosAuditoria)
  * @swagger
  * /v1/auditorias/tarefas/periodoInicio/{data_inicio}/periodoFim/{data_fim}:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Auditorias
  *     summary: Retorna Auditoria de Tarefas
@@ -60,6 +64,8 @@ router.get('/v1/auditorias/tarefas/periodoInicio/:data_inicio/periodoFim/:data_f
  * @swagger
  * /v1/auditorias/pontos/periodoInicio/{data_inicio}/periodoFim/{data_fim}:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Auditorias
  *     summary: Retorna Auditoria de Pontos
@@ -91,6 +97,8 @@ router.get('/v1/auditorias/pontos/periodoInicio/:data_inicio/periodoFim/:data_fi
  * @swagger
  * /v1/auditorias/pontos:
  *   post:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Auditorias
  *     summary: Insere uma nova Auditoria de Ponto.
@@ -120,6 +128,8 @@ router.post('/v1/auditorias/pontos', AuditoriaController.criaAuditoriasPontos)
  * @swagger
  * /v1/auditorias/tarefas:
  *   post:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Auditorias
  *     summary: Insere uma nova Auditoria de Tarefa.

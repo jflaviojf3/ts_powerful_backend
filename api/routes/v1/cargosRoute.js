@@ -9,6 +9,8 @@ const router = Router()
  * @swagger
  * /v1/cargos:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Cargos
  *     summary: Retorna lista de Cargos
@@ -31,6 +33,8 @@ router.get('/v1/cargos', CargoController.pegaTodosCargos)
  * @swagger
  * /v1/cargos/{id_cargo}:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Cargos
  *     summary: Retorna um Cargo
@@ -58,6 +62,8 @@ router.get('/v1/cargos/:id_cargo', CargoController.pegaUmCargo)
  * @swagger
  * /v1/cargos:
  *   post:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Cargos
  *     summary: Insere um novo Cargo.
@@ -87,6 +93,8 @@ router.post('/v1/cargos', CargoController.criaCargo)
  * @swagger
  * /v1/cargos/{id_cargo}:
  *   put:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Cargos
  *     summary: Atualiza um Cargo.
@@ -121,6 +129,8 @@ router.put('/v1/cargos/:id_cargo', CargoController.atualizaCargo)
  * @swagger
  * /v1/cargos/{id_cargo}:
  *   delete:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Cargos
  *     summary: Deleta um Cargo.
@@ -150,6 +160,8 @@ router.delete('/v1/cargos/:id_cargo', CargoController.deletaCargo)
  * @swagger
  * /v1/cargos/{id_cargo}/atribuicoes:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Atribuições
  *     summary: Retorna todas Atribuição.
@@ -177,6 +189,8 @@ router.get('/v1/cargos/:id_cargo/atribuicoes', CargoController.pegaTodasAtribuic
  * @swagger
  * /v1/cargos/{id_cargo}/atribuicoes:
  *   post:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Atribuições
  *     summary: Insere uma Atribuição.
@@ -211,6 +225,8 @@ router.post('/v1/cargos/:id_cargo/atribuicoes', CargoController.criaAtribuicao)
  * @swagger
  * /v1/cargos/{id_cargo}/atribuicoes/{id_atribuicao}:
  *   put:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Atribuições
  *     summary: Atualiza uma Atribuição.
@@ -249,6 +265,8 @@ router.put('/v1/cargos/:id_cargo/atribuicoes/:id_atribuicao', CargoController.at
  * @swagger
  * /v1/cargos/{id_cargo}/atribuicoes/{id_atribuicao}:
  *   delete:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Atribuições
  *     summary: Deleta uma Atribuição.

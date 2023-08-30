@@ -9,6 +9,8 @@ const router = Router()
  * @swagger
  * /v1/organizacoes:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Organizações
  *     summary: Retorna lista de Organizações
@@ -31,6 +33,8 @@ router.get('/v1/organizacoes', OrganizacaoController.pegaTodosOrganizacao)
  * @swagger
  * /v1/organizacoes/{id_organizacao}:
  *   get:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Organizações
  *     summary: Retorna uma Organização
@@ -58,6 +62,8 @@ router.get('/v1/organizacoes/:id_organizacao', OrganizacaoController.pegaUmOrgan
  * @swagger
  * /v1/organizacoes:
  *   post:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Organizações
  *     summary: Insere uma nova Organizacão.
@@ -87,6 +93,8 @@ router.post('/v1/organizacoes', OrganizacaoController.criaOrganizacao)
  * @swagger
  * /v1/organizacoes/{id_organizacao}:
  *   put:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Organizações
  *     summary: Atualiza uma Organização.
@@ -121,6 +129,8 @@ router.put('/v1/organizacoes/:id_organizacao', OrganizacaoController.atualizaOrg
  * @swagger
  * /v1/organizacoes/{id_organizacao}:
  *   delete:
+ *     security:
+ *      - bearerAuth: []
  *     tags:
  *      - Organizações
  *     summary: Deleta uma Organização.
