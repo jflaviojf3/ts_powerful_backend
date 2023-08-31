@@ -29,6 +29,7 @@ class UsuariosServices extends Services {
     }
 
     async criaUsuario(dados){
+        //verificar se email já é cadastro
         const usuarioExiste = await this.pegaUmRegistro({attributes: { exclude: ['id_usuarios', 'senha', 'createdAt', 'updatedAt', 'deletedAt'] }, where: {
             email: dados.email
         }})

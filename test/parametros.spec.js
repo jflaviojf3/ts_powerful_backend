@@ -16,7 +16,7 @@ describe("Testes dos endpoints de parametros", () => {
       .send({
         id_propriedade: 5,
         descricao_propriedade: "Novo Parametro",
-        cod_propriedade: 1,
+        cod_propriedade: 2,
         descricao_codigo: "Codigo Parametro Criado",
       })
       .set("Authorization", `Bearer ${token}`);
@@ -111,7 +111,7 @@ describe("Testes dos endpoints de parametros", () => {
 
     expect(res.statusCode).toEqual(200);
     expect(res.body.descricao_codigo).toEqual("Codigo Parametro Atualizado");
-    expect(res.body.cod_propriedade).toEqual(1);
+    expect(res.body.cod_propriedade).toEqual(2);
     expect(res.body.descricao_propriedade).toEqual("Novo Parametro");
     expect(res.body).toMatchObject(
       expect.objectContaining({

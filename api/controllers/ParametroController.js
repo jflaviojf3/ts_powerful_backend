@@ -1,9 +1,10 @@
-const database = require("../models");
+const {ParametrosServices} = require('../services')
+const parametrosServices = new ParametrosServices('Parametros')
 
 class ParametroController {
   static async pegaTodosParametros(req, res) {
     try {
-      const todosParametros = await database.tabelaGenerica.findAll();
+      const todosParametros = await parametrosServices.pegaTodosOsRegistros();
       return res.status(200).json(todosParametros);
     } catch (error) {
       return res.status(500).json(error.message);
@@ -13,9 +14,7 @@ class ParametroController {
   static async pegaUmParametro(req, res) {
     const { id_param } = req.params;
     try {
-      const umParametro = await database.tabelaGenerica.findByPk(
-        Number(id_param)
-      );
+      const umParametro = await parametrosServices.pegaUmParametro(Number(id_param));
       return res.status(200).json(umParametro);
     } catch (error) {
       return res.status(500).json(error.message);
@@ -25,9 +24,7 @@ class ParametroController {
   static async pegaTodosPropriedadeParametro(req, res) {
     const { id_propriedade } = req.params;
     try {
-      const umTodasPropParam = await database.tabelaGenerica.findAll({
-        where: { id_propriedade: Number(id_propriedade) },
-      });
+      const umTodasPropParam = await parametrosServices.pegaTodasPropriedadeParametro( Number(id_propriedade) );
       return res.status(200).json(umTodasPropParam);
     } catch (error) {
       return res.status(500).json(error.message);
@@ -37,7 +34,7 @@ class ParametroController {
   static async criaParametro(req, res) {
     const novoParametro = req.body;
     try {
-      const umNovoParametroCriado = await database.tabelaGenerica.create(
+      const umNovoParametroCriado = await parametrosServices.criaParametro(
         novoParametro
       );
       return res.status(200).json(umNovoParametroCriado);
@@ -50,12 +47,8 @@ class ParametroController {
     const { id_param } = req.params;
     const atualizaParametro = req.body;
     try {
-      await database.tabelaGenerica.update(atualizaParametro, {
-        where: { id_tabGenerica: Number(id_param) },
-      });
-      const umParametroAtualizado = await database.tabelaGenerica.findOne({
-        where: { id_tabGenerica: Number(id_param) },
-      });
+      await parametrosServices.atualizaUmParametro(atualizaParametro, Number(id_param));
+      const umParametroAtualizado = await parametrosServices.pegaUmParametro(Number(id_param));
       return res.status(200).json(umParametroAtualizado);
     } catch (error) {
       return res.status(500).json(error.message);
@@ -65,9 +58,7 @@ class ParametroController {
   static async deletaParametro(req, res) {
     const { id_param } = req.params;
     try {
-      await database.tabelaGenerica.destroy({
-        where: { id_tabGenerica: Number(id_param) },
-      });
+      await parametrosServices.deletaParametro(Number(id_param));
       return res.status(200).json({ mensagem: `Id parametro ${id_param} deletado` });
     } catch (error) {
       return res.status(500).json(error.message);
