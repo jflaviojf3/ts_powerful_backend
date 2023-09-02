@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const UsuarioController = require("../../controllers/UsuarioController");
 const autenticado = require('../../middleware/autenticado')
+const papeis = require('../../middleware/papeis')
 
 const router = Router();
 
@@ -28,7 +29,7 @@ router.use(autenticado)
  *       500:
  *         description: Erro ao retorna lista de usuários.
  */
-router.get("/v1/usuarios", UsuarioController.pegaTodosUsuarios);
+router.get("/v1/usuarios", papeis([4, 3, 2, 1]), UsuarioController.pegaTodosUsuarios);
 
 /**
  * @swagger
@@ -57,7 +58,7 @@ router.get("/v1/usuarios", UsuarioController.pegaTodosUsuarios);
  *       500:
  *         description: Erro ao retornar usuário.
  */
-router.get("/v1/usuarios/:id_usuario", UsuarioController.pegaUmUsuario);
+router.get("/v1/usuarios/:id_usuario", papeis([4, 3, 2, 1]), UsuarioController.pegaUmUsuario);
 
 /**
  * @swagger

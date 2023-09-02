@@ -16,6 +16,11 @@ class ParametrosServices extends Services {
         .findAll({ where: { id_propriedade: where }})
     }
 
+    async pegaTodasPropriedadeParametroPermissao( where = {}){
+        return database[this.nomeDoModelo]
+        .findAll({ attributes: ["cod_propriedade", "descricao_codigo"], where: { id_propriedade: where }})
+    }
+
     async atualizaUmParametro(dadosAtualizados, where, transacao={}){
         return database[this.nomeDoModelo]
         .update(dadosAtualizados, { where: { id_tabGenerica: where }}, transacao)

@@ -32,6 +32,6 @@ const router = Router();
  *       500:
  *         description: Erro de conexão com o servidor.
  */
-router.post("/v1/auth", AuthController.fazerLogin);
+router.post("/v1/auth",  AuthController.fazerLogin);
 
 module.exports = router;

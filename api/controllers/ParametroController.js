@@ -1,5 +1,5 @@
 const {ParametrosServices} = require('../services')
-const parametrosServices = new ParametrosServices('Parametros')
+const parametrosServices = new ParametrosServices('tabelaGenerica')
 
 class ParametroController {
   static async pegaTodosParametros(req, res) {
