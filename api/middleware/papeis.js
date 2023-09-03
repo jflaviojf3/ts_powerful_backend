@@ -1,7 +1,5 @@
 const UsuarioService = require("../services/UsuariosServices");
 const usuarioService = new UsuarioService("Usuario");
-const { ParametrosServices } = require("../services");
-const parametrosServices = new ParametrosServices("tabelaGenetica");
 
 const papeis = (listaPermissao) => {
 return  async (req, res, next) => {
@@ -15,8 +13,7 @@ return  async (req, res, next) => {
   if (!usuario) {
     return res.status(401).send("Usuario nao cadastrado");
   }
-  /*const idPropriedade = 2;
-  //CRIAR SERVICE PARA PARAMETROS E USAR AQUI O FILTRO POR CONSULTA COD_PARAMETRO ID = 2
+  /* //CRIAR SERVICE PARA PARAMETROS E USAR AQUI O FILTRO POR CONSULTA COD_PARAMETRO ID = 2
   const { ...listaPerfil } =
     await parametrosServices.pegaTodasPropriedadeParametroPermissao(
       Number(idPropriedade)
@@ -32,18 +29,13 @@ return  async (req, res, next) => {
     return res.status(500).send("Falha na consulta de perfil");
   }*/
   
-  //DEPOIS CRIAR UMA COMPARAÇÃO COM USUARIO.COD_PERFIL E SE EXISTE DENTRO DAQUELA LISTA DE PARAMETRO
   const perfilEncontrado = listaPermissao.some(
     (item) => item === usuario.cod_perfil
   );
   
   if (!perfilEncontrado) {
-    return res.status(401).send("Usuario não possui aecsso a essa rota");
+    return res.status(401).send("Usuario não possui acesso a essa rota");
   }
-
-
-  //E DEFINIR SE ELE TEM PERMISSÃO AO ENDPOINT, PASSADO POR PARAMETRO listaLRoles
-
   next();
 };
 }

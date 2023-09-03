@@ -2,7 +2,6 @@ const Services = require('./Services')
 const database = require('../models')
 const { compare } = require('bcryptjs')
 const { sign } = require('jsonwebtoken')
-const jsonScret = require('../config/jsonSecret')
 
 class AuthServices extends Services {
     constructor(){
@@ -29,7 +28,7 @@ class AuthServices extends Services {
           const token = sign({
             id: usuario.id_usuarios,
             email: usuario.email
-          }, jsonScret.secret, {
+          }, process.env.JSONSECRET_AUTH, {
             expiresIn: 86400
           })
         

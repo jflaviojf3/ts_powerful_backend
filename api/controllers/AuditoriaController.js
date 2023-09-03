@@ -3,7 +3,6 @@ const formata = require("../utils");
 const { Op } = require("sequelize");
 
 class AuditoriaController {
-
   static async pegaTodosAuditoria(req, res) {
     try {
       const todosAuditoria = await database.Auditorias.findAll();
@@ -59,7 +58,9 @@ class AuditoriaController {
   static async criaAuditoriasPontos(req, res) {
     const novaAuditoriaPonto = req.body;
     try {
-      const umNovaAuditoriaPonto = await database.Auditorias.create(novaAuditoriaPonto);
+      const umNovaAuditoriaPonto = await database.Auditorias.create(
+        novaAuditoriaPonto
+      );
       return res.status(200).json(umNovaAuditoriaPonto);
     } catch (error) {
       return res.status(500).json(error.message);
@@ -70,13 +71,14 @@ class AuditoriaController {
   static async criaAuditoriasTarefas(req, res) {
     const novaAuditoriaTarefas = req.body;
     try {
-      const umNovaAuditoriaTarefas = await database.Auditorias.create(novaAuditoriaTarefas);
+      const umNovaAuditoriaTarefas = await database.Auditorias.create(
+        novaAuditoriaTarefas
+      );
       return res.status(200).json(umNovaAuditoriaTarefas);
     } catch (error) {
       return res.status(500).json(error.message);
     }
   }
-
 }
 
 module.exports = AuditoriaController;

@@ -13,6 +13,22 @@ class Utils {
     return dataFormatada;
   }
 
+  static trataUsuarioGoogle(userGoogle){
+  const novoUsuario = {
+    nome: userGoogle.name.split(" ")[0],
+    sobrenome: userGoogle.name.split(" ")[1] || null,
+    email: userGoogle.email,
+    senha: userGoogle.sub,
+    provedor: 'google',
+    foto: userGoogle.picture
+  }
+  const usuarioGoogle = {
+    body: novoUsuario
+  }
+    return usuarioGoogle
+  }
+
+
   static async criaAuditoriaPonto(descricao, id_ponto) {
     let res;
     let app;
@@ -104,6 +120,7 @@ class Utils {
 }
 
 module.exports = {
+  trataUsuarioGoogle: Utils.trataUsuarioGoogle,
   fazerLogin: Utils.fazerLogin,
   formataData: Utils.formataData,
   criaAuditoriaTarefa: Utils.criaAuditoriaTarefa,

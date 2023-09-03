@@ -30,6 +30,7 @@ describe("Testes dos endpoints de usuarios", () => {
         nome: expect.any(String),
         sobrenome: expect.any(String),
         email: expect.any(String),
+        provedor: expect.any(String),
         ativo: expect.any(Number),
         ddd: expect.any(Number),
         telefone: expect.any(Number),

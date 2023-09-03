@@ -1,7 +1,23 @@
 const { Router } = require("express");
 const AuthController = require("../../controllers/AuthController");
+const UsuarioController = require("../../controllers/UsuarioController");
+const passport = require("passport");
+const session = require("express-session");
+const { trataUsuarioGoogle } = require("../../utils");
+
+require("../../middleware/authGoogle");
+//require("../../middleware/authGithub");
+//require("../../middleware/authMicrosoft");
 
 const router = Router();
+
+function estaLogado(req, res, next) {
+  req.user ? next() : res.sendStatus(401);
+}
+
+router.use(session({ secret: "JF3@", resave: false, saveUninitialized: true }));
+router.use(passport.initialize());
+router.use(passport.session());
 
 /**
  * @swagger
@@ -32,6 +48,33 @@ const router = Router();
  *       500:
  *         description: Erro de conexão com o servidor.
  */
-router.post("/v1/auth",  AuthController.fazerLogin);
+router.post("/v1/auth", AuthController.fazerLogin);
+
+router.get(
+  "/v1/auth/google",
+  passport.authenticate("google", { scope: ["email", "profile"] })
+);
+
+router.get(
+  "/v1/auth/google/callback",
+  passport.authenticate("google", {
+    successRedirect: "/home",
+    failureRedirect: "/telaLogin",
+  })
+);
+
+//router.get("/v1/auth/microsoft",passport.authenticate("microsoft"  /* , {prompt: "select_account"}*/));
+//router.get(  "/v1/auth/microsoft/callback",  passport.authenticate("microsoft", {successRedirect: "/home",failureRedirect: "/telaLogin",}));
+
+router.get("/home", estaLogado, (req, res) => {
+  const usuarioGoogle = trataUsuarioGoogle(req.user._json);
+  UsuarioController.criaUsuario(usuarioGoogle, res);
+  res.redirect("/v1/api-docs");
+});
+
+router.get("/logout", (req, res) => {
+  req.session.destroy();
+  res.send("Até a proxima!");
+});
 
 module.exports = router;

@@ -9,7 +9,7 @@ const options = {
     },
     servers: [
       {
-        url: `http://${process.env.DOMINIO}:${process.env.PORTA_EXTERNO}`,
+        url: `${process.env.DNS_PUBLICO}`,
         description: "Ambiente Desenvolvimento"
       },
       {
