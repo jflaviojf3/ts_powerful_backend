@@ -31,4 +31,8 @@ jobs:
           node-version: 18
       - run: npm ci
       - run: echo "${{vars.SERVER_PROD}}" > .env
+      - run: echo "${{vars.JSONSECRET_AUTH}}" > .env
+      - run: echo "${{vars.GOOGLE_CLIENT_ID}}" > .env
+      - run: echo "${{vars.GOOGLE_CLIENT_SECRET}}" > .env
+      - run: echo "${{vars.GOOGLE_CALLBACK_URL}}" > .env
       - run: npm test
