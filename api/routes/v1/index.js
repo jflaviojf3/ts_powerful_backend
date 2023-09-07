@@ -1,6 +1,7 @@
 const bodyParser = require("body-parser");
 const swaggerUi = require("swagger-ui-express");
 const swaggerJSDoc = require("swagger-jsdoc");
+const cors = require('cors');
 const options = require("../../swagger");
 const swaggerSpec = swaggerJSDoc(options);
 const pageLogin = require('../../tempLogin')
@@ -18,6 +19,7 @@ const auditorias = require("./auditoriasRoute");
 const tarefas = require("./tarefasRoute");
 
 module.exports = (app) => {
+  app.use(cors())
   app.use(bodyParser.json());
   app.use("/v1/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
   app.get("/", (req, res) => res.redirect("/telaLogin"));

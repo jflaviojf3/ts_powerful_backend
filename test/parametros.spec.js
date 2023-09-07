@@ -2,13 +2,39 @@ const request = require("supertest");
 const app = require("../api/server.js");
 const { fazerLogin } = require("../api/utils.js");
 
-describe("Testes dos endpoints de parametros", () => {
+describe.only("Testes dos endpoints de parametros", () => {
   let id_tabGenerica_criada;
   let token;
+  let cod_prop;
 
   beforeAll(async () => {
     token = await fazerLogin();
   });
+
+  it("Teste para consultar lista de propriedade, deve retornar 200", async () => {
+    const res = await request(app)
+      .get("/v1/parametros/propriedade/5")
+      .set("Authorization", `Bearer ${token}`);
+
+      let tamCod = res.body.length - 1;
+      cod_prop = res.body[tamCod].cod_propriedade + 1
+
+    expect(res.statusCode).toEqual(200);
+    expect(res.body).not.toHaveLength(1);
+    expect(res.body[0].descricao_propriedade).toEqual("Novo Parametro");
+    expect(res.body[0]).toMatchObject(
+      expect.objectContaining({
+        id_tabGenerica: expect.any(Number),
+        id_propriedade: expect.any(Number),
+        cod_propriedade: expect.any(Number),
+        descricao_propriedade: expect.any(String),
+        descricao_codigo: expect.any(String),
+        createdAt: expect.any(String),
+        updatedAt: expect.any(String),
+      })
+    );
+  });
+
 
   it("Teste para criar novo parametro, deve retornar 200", async () => {
     const res = await request(app)
@@ -16,7 +42,7 @@ describe("Testes dos endpoints de parametros", () => {
       .send({
         id_propriedade: 5,
         descricao_propriedade: "Novo Parametro",
-        cod_propriedade: 2,
+        cod_propriedade: cod_prop,
         descricao_codigo: "Codigo Parametro Criado",
       })
       .set("Authorization", `Bearer ${token}`);
@@ -60,27 +86,6 @@ describe("Testes dos endpoints de parametros", () => {
     );
   });
 
-  it("Teste para consultar lista de propriedade, deve retornar 200", async () => {
-    const res = await request(app)
-      .get("/v1/parametros/propriedade/5")
-      .set("Authorization", `Bearer ${token}`);
-
-    expect(res.statusCode).toEqual(200);
-    expect(res.body).not.toHaveLength(1);
-    expect(res.body[0].descricao_propriedade).toEqual("Novo Parametro");
-    expect(res.body[0]).toMatchObject(
-      expect.objectContaining({
-        id_tabGenerica: expect.any(Number),
-        id_propriedade: expect.any(Number),
-        cod_propriedade: expect.any(Number),
-        descricao_propriedade: expect.any(String),
-        descricao_codigo: expect.any(String),
-        createdAt: expect.any(String),
-        updatedAt: expect.any(String),
-      })
-    );
-  });
-
   it("Teste para consultar um parametro, deve retornar 200", async () => {
     const res = await request(app)
       .get(`/v1/parametros/${id_tabGenerica_criada}`)
@@ -101,7 +106,7 @@ describe("Testes dos endpoints de parametros", () => {
     );
   });
 
-  it("Teste para atualizar o usuário que foi criado, deve retornar 200", async () => {
+  it("Teste para atualizar um parametro que foi criado, deve retornar 200", async () => {
     const res = await request(app)
       .put(`/v1/parametros/${id_tabGenerica_criada}`)
       .send({
@@ -111,7 +116,7 @@ describe("Testes dos endpoints de parametros", () => {
 
     expect(res.statusCode).toEqual(200);
     expect(res.body.descricao_codigo).toEqual("Codigo Parametro Atualizado");
-    expect(res.body.cod_propriedade).toEqual(2);
+    expect(res.body.cod_propriedade).toEqual(cod_prop);
     expect(res.body.descricao_propriedade).toEqual("Novo Parametro");
     expect(res.body).toMatchObject(
       expect.objectContaining({

@@ -18,6 +18,7 @@ if (config.use_env_variable) {
     port: process.env.PORT_BANCO,
     timezone: "-03:00",
     dialect: 'mysql',
+    logging: false,
     dialectOptions: {
       dateStrings: true,
       typeCast: true
