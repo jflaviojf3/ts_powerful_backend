@@ -19,7 +19,7 @@ const auditorias = require("./auditoriasRoute");
 const tarefas = require("./tarefasRoute");
 
 module.exports = (app) => {
-  app.use(cors())
+  app.use(cors({ origin: '*' }))
   app.use(bodyParser.json());
   app.use("/v1/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
   app.get("/", (req, res) => res.redirect("/telaLogin"));
