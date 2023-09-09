@@ -5,6 +5,37 @@ const papeis = require('../../middleware/papeis')
 
 const router = Router();
 
+/**
+ * @swagger
+ * /v1/usuarios/:
+ *   post:
+ *     security:
+ *      - bearerAuth: []
+ *     tags:
+ *      - Usuarios
+ *     summary: Insere um Novo Usuário
+ *     description: Inserir um novo Usuário na base do sistema
+ *     requestBody:
+ *       description: Exemplo de requestBody de um novo usuário
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/requestBody/Usuarios_put_post'
+ *       required: true
+ *     responses:
+ *       200:
+ *         description: Retorna o usuário Inserido com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Usuarios'
+ *       500:
+ *         description: Erro ao Inserir usuário.
+ */
+router.post("/v1/usuarios", UsuarioController.criaUsuario);
+
 router.use(autenticado)
 
 /**
@@ -59,37 +90,6 @@ router.get("/v1/usuarios", papeis([4, 3, 2, 1]), UsuarioController.pegaTodosUsua
  *         description: Erro ao retornar usuário.
  */
 router.get("/v1/usuarios/:id_usuario", papeis([4, 3, 2, 1]), UsuarioController.pegaUmUsuario);
-
-/**
- * @swagger
- * /v1/usuarios/:
- *   post:
- *     security:
- *      - bearerAuth: []
- *     tags:
- *      - Usuarios
- *     summary: Insere um Novo Usuário
- *     description: Inserir um novo Usuário na base do sistema
- *     requestBody:
- *       description: Exemplo de requestBody de um novo usuário
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/requestBody/Usuarios_put_post'
- *       required: true
- *     responses:
- *       200:
- *         description: Retorna o usuário Inserido com sucesso
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Usuarios'
- *       500:
- *         description: Erro ao Inserir usuário.
- */
-router.post("/v1/usuarios", UsuarioController.criaUsuario);
 
 /**
  * @swagger

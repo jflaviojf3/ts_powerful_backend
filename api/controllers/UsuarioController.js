@@ -7,7 +7,7 @@ class UsuarioController {
       const todosUsuarios = await usuariosServices.pegaTodosOsUsuarios();
       return res.status(200).json(todosUsuarios);
     } catch (error) {
-      return res.status(500).json(error.message);
+      return res.status(500).json({"message": error.message});
     }
   }
 
@@ -29,6 +29,7 @@ class UsuarioController {
       const usuarioExiste = await usuariosServices.validaUsuarioProvedor(
         novoUsuario
       );
+      
       if (usuarioExiste == true) {
         const umNovoUsuarioCriado = {
           ...(await usuariosServices.criaUsuario(novoUsuario)),
@@ -43,9 +44,9 @@ class UsuarioController {
             email: email,
           },
         });
-        return res.status(200).json();
+        return res.status(200).json({message:"Provedor Atualizado"});
       } else {
-        throw new Error("Email ja cadastrado");
+        return res.status(500).json({ message: "Email já cadastrado" });
       }
     } catch (error) {
       return res.status(500).json(error.message);
