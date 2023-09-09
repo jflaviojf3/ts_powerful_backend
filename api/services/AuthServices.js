@@ -1,7 +1,7 @@
 const Services = require("./Services");
 const database = require("../models");
 const { compare } = require("bcryptjs");
-const { sign } = require("jsonwebtoken");
+const { sign, verify, decode} = require("jsonwebtoken");
 
 class AuthServices extends Services {
   constructor() {
@@ -16,8 +16,8 @@ class AuthServices extends Services {
     });
 
     if (!usuario) {
-      const erroJSON = JSON.stringify({ message: "Usuario não cadastrado" });
-      throw new Error(erroJSON);
+      //const erroJSON = JSON.stringify({ message: "" });
+      throw new Error("Usuario não cadastrado");
     }
 
     const senhaConfere = await compare(dados.senha, usuario.senha);
@@ -39,6 +39,20 @@ class AuthServices extends Services {
     );
 
     return { token };
+  }
+
+  async verificaToken(accessToken){
+    try {
+      verify(accessToken, process.env.JSONSECRET_AUTH);
+      const { id, email } = await decode(accessToken);
+      const req = {
+        usuarioId: id,
+        usuarioEmail: email
+      }
+      return req
+    } catch (error) {
+      return ({ menssage: "Usuario nao autorizado" });
+    }
   }
 }
 

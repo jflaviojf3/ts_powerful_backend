@@ -50,6 +50,37 @@ router.use(passport.session());
  */
 router.post("/v1/auth", AuthController.fazerLogin);
 
+/**
+ * @swagger
+ * /v1/authToken:
+ *   post:
+ *     tags:
+ *      - Auth
+ *     summary: Decodifica o token do usuário
+ *     description: Decodifica o token do usuario logado e retorna os seus dados
+ *     requestBody:
+ *       description: Exemplo de requestBody para autenticação
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/requestBody/Auth_put_post'
+ *       required: true
+ *     responses:
+ *       200:
+ *         description: Retorna os dados de usuário com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Auth'
+ *       401:
+ *         description: Erro de autenticação, usuário não autenticado.
+ *       500:
+ *         description: Erro de conexão com o servidor.
+ */
+router.post("/v1/authToken", AuthController.decodificaToken);
+
 router.get(
   "/v1/auth/google",
   passport.authenticate("google", { scope: ["email", "profile"] })
