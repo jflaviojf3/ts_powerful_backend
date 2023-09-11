@@ -20,6 +20,7 @@ class Utils {
     email: userGoogle.email,
     senha: userGoogle.sub,
     provedor: 'google',
+    cod_perfil: 1,
     foto: userGoogle.picture
   }
   const usuarioGoogle = {

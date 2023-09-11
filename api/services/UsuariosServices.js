@@ -92,8 +92,7 @@ class UsuariosServices extends Services {
             return false;
           }
         } else {
-          const erroJSON = JSON.stringify({ message: "Email já cadastrado" });
-          throw new Error(erroJSON);
+          throw new Error("Email já cadastrado");
         }
       } catch (e) {}
     } else {
@@ -119,8 +118,7 @@ class UsuariosServices extends Services {
     });
 
     if (usuarioExiste) {
-      const erroJSON = JSON.stringify({ message: "Email já cadastrado" });
-      throw new Error(erroJSON);
+      throw new Error("Email já cadastrado");
     }
 
     const senha = await hash(dados.senha, 6);

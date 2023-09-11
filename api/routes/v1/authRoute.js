@@ -97,10 +97,10 @@ router.get(
 //router.get("/v1/auth/microsoft",passport.authenticate("microsoft"  /* , {prompt: "select_account"}*/));
 //router.get(  "/v1/auth/microsoft/callback",  passport.authenticate("microsoft", {successRedirect: "/home",failureRedirect: "/telaLogin",}));
 
-router.get("/home", estaLogado, (req, res) => {
+router.get("/home", estaLogado, async (req, res) => {
   const usuarioGoogle = trataUsuarioGoogle(req.user._json);
-  UsuarioController.criaUsuario(usuarioGoogle, res);
-  res.redirect("/v1/api-docs");
+  const tokenLogin = await UsuarioController.criaUsuarioProvedor(usuarioGoogle);
+  res.redirect(`${process.env.DNS_FRONTEND_WEB}/Login/${tokenLogin.token}`);
 });
 
 router.get("/logout", (req, res) => {
