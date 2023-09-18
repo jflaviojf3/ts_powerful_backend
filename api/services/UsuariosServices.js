@@ -19,7 +19,6 @@ class UsuariosServices extends Services {
         .findAll({
           attributes: {
             exclude: [
-              "id_usuarios",
               "senha",
               "createdAt",
               "updatedAt",
@@ -37,7 +36,6 @@ class UsuariosServices extends Services {
       {
         attributes: {
           exclude: [
-            "id_usuarios",
             "senha",
             "createdAt",
             "updatedAt",
@@ -54,7 +52,6 @@ class UsuariosServices extends Services {
     return database[this.nomeDoModelo].findOne({
       attributes: {
         exclude: [
-          "id_usuarios",
           "senha",
           "createdAt",
           "updatedAt",

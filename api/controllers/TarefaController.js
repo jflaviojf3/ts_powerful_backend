@@ -1,6 +1,6 @@
 const database = require("../models");
 const formata = require("../utils");
-const { Op } = require("sequelize");
+const { Op, fn, col } = require("sequelize");
 
 class TarefaController {
   static async pegaTodasTarefasUsuario(req, res) {
@@ -32,14 +32,29 @@ class TarefaController {
 
   static async pegaTarefaDoDiaUsuario(req, res) {
     const { id_usuario, dia } = req.params;
-    const dataAtual = formata.formataData(dia);
-    console.log("dataAtual: " + dataAtual);
+    const dataAtual = dia;
     try {
       const tarefasDia = await database.Tarefas.findAll({
         where: {
           data_inicio: {
             [Op.between]: [`${dataAtual} 00:00:00`, `${dataAtual} 23:59:59`],
           },
+          id_usuarios: id_usuario,
+        },
+      });
+      return res.status(200).json(tarefasDia);
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  }
+
+  static async pegaTarefasPorDiaUsuario(req, res) {
+    const { id_usuario } = req.params;
+    try {
+      const tarefasDia = await database.Tarefas.findAll({
+        attributes: [[fn("DATE", col("data_inicio")), "data_dia"]],
+        group: [fn("DATE", col("data_inicio"))],
+        where: {
           id_usuarios: id_usuario,
         },
       });
@@ -117,9 +132,9 @@ class TarefaController {
       });
       const umTarefaAtualizada = await database.Tarefas.findOne({
         where: {
-            id_tarefas: Number(id_tarefa),
-            entrada: Number(cod_entrada),
-            id_usuarios: Number(id_usuario),
+          id_tarefas: Number(id_tarefa),
+          entrada: Number(cod_entrada),
+          id_usuarios: Number(id_usuario),
         },
       });
       formata.criaAuditoriaTarefa(
@@ -137,13 +152,19 @@ class TarefaController {
   static async deletaTarefa(req, res) {
     const { id_usuario, id_tarefa, cod_entrada } = req.params;
     try {
-      console.log (typeof id_usuario +" - "+ typeof id_tarefa + " - "+ typeof cod_entrada)
+      console.log(
+        typeof id_usuario +
+          " - " +
+          typeof id_tarefa +
+          " - " +
+          typeof cod_entrada
+      );
       await database.Tarefas.destroy({
-        where: { 
-            id_tarefas: String(id_tarefa),
-            entrada: String(cod_entrada),
-            id_usuarios: String(id_usuario),
-         },
+        where: {
+          id_tarefas: String(id_tarefa),
+          entrada: String(cod_entrada),
+          id_usuarios: String(id_usuario),
+        },
       });
       return res
         .status(200)
