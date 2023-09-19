@@ -35,7 +35,7 @@ describe("Testes dos endpoints de tarefas do usuario", () => {
 
   it("Teste consulta tarefas do dia buscando dia atual, deve retornar 200", async () => {
     const res = await request(app)
-      .get("/v1/usuarios/1/tarefaDia/20230509")
+      .get("/v1/usuarios/1/tarefaDia/2023-05-09")
       .set("Authorization", `Bearer ${token}`);
 
     expect(res.statusCode).toEqual(200);
@@ -59,7 +59,7 @@ describe("Testes dos endpoints de tarefas do usuario", () => {
 
   it("Teste consulta todas as tarefas do usuario, deve retornar 200", async () => {
     const res = await request(app)
-      .get("/v1/usuarios/1/tarefaDia/20230509")
+      .get("/v1/usuarios/1/tarefaDia/2023-05-09")
       .set("Authorization", `Bearer ${token}`);
 
     expect(res.statusCode).toEqual(200);

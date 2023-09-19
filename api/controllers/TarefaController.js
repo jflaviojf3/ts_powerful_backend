@@ -53,6 +53,7 @@ class TarefaController {
     try {
       const tarefasDia = await database.Tarefas.findAll({
         attributes: [[fn("DATE", col("data_inicio")), "data_dia"]],
+        order: [['data_dia', 'DESC']],
         group: [fn("DATE", col("data_inicio"))],
         where: {
           id_usuarios: id_usuario,
