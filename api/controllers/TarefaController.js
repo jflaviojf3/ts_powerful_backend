@@ -65,6 +65,23 @@ class TarefaController {
     }
   }
 
+  static async pegaTarefaAtivaUsuario(req, res) {
+    const { id_usuario } = req.params;
+    try {
+      const tarefasDia = await database.Tarefas.findOne({
+        where: {
+          id_usuarios: id_usuario,
+          data_fim: {
+            [Op.is]: null
+          }
+        },
+      });
+      return res.status(200).json(tarefasDia);
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  }
+
   static async pegaPeriodoTarefaUsuario(req, res) {
     const { id_usuario, data_inicio, data_fim } = req.params;
     const dataInicio = formata.formataData(data_inicio);
@@ -153,13 +170,6 @@ class TarefaController {
   static async deletaTarefa(req, res) {
     const { id_usuario, id_tarefa, cod_entrada } = req.params;
     try {
-      console.log(
-        typeof id_usuario +
-          " - " +
-          typeof id_tarefa +
-          " - " +
-          typeof cod_entrada
-      );
       await database.Tarefas.destroy({
         where: {
           id_tarefas: String(id_tarefa),
