@@ -120,10 +120,37 @@ class TarefaController {
       return res.status(500).json(error.message);
     }
   }
+
   static async criaTarefa(req, res) {
     const { id_usuario } = req.params;
     const novaTarefa = { ...req.body, id_usuarios: id_usuario };
     try {
+      const tarefasAtivas = await database.Tarefas.findAll({
+        where: {
+          id_usuarios: id_usuario,
+          data_fim: {
+            [Op.is]: null
+          }
+        },
+      });
+
+      if (tarefasAtivas.length >= 1 ){
+        const atualizaTarefa = {
+          data_fim: formata.getCurrentDateTime()
+        }
+        try {
+          await database.Tarefas.update(atualizaTarefa, {
+            where: {
+              id_tarefas: Number(tarefasAtivas[0].id_tarefas),
+              entrada: Number(tarefasAtivas[0].entrada),
+              id_usuarios: Number(tarefasAtivas[0].id_usuarios),
+            },
+          });
+        } catch (error) {
+          return res.status(500).json(error.message);
+        }
+      }
+
       const umaNovaTarefaCriada = await database.Tarefas.create(novaTarefa);
       formata.criaAuditoriaTarefa(
         `Tarefa Criada| ${umaNovaTarefaCriada.descricao}`,

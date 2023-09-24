@@ -3,6 +3,19 @@ const axios = require("axios");
 class Utils {
 
 
+  static getCurrentDateTime() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0'); // Adiciona zero à esquerda, se necessário
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+  
+    const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    return formattedDateTime;
+  }
+
   static formataData(data) {
     const ano = data.slice(0, 4);
     const mes = data.slice(4, 6);
@@ -123,6 +136,7 @@ class Utils {
 module.exports = {
   trataUsuarioGoogle: Utils.trataUsuarioGoogle,
   fazerLogin: Utils.fazerLogin,
+  getCurrentDateTime: Utils.getCurrentDateTime,
   formataData: Utils.formataData,
   criaAuditoriaTarefa: Utils.criaAuditoriaTarefa,
   criaAuditoriaPonto: Utils.criaAuditoriaPonto,

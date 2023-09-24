@@ -30,7 +30,6 @@ class PontoController {
   static async pegaPontoDoDiaUsuario(req, res) {
     const { id_usuario, dia } = req.params;
     const dataAtual = formata.formataData(dia);
-    console.log("dataAtual: " + dataAtual);
     try {
       const umDiaPonto = await database.Pontos.findAll({
         where: {
