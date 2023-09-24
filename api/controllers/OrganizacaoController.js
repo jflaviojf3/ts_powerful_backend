@@ -20,6 +20,16 @@ class OrganizacaoController {
         }
     }
 
+    static async pegaOrganizacaoNome(req, res){
+        const nomeOrganizacao = req.body.nome
+        try {
+            const umOrganizacao = await database.Organizacoes.findOne({ where: {nome:nomeOrganizacao}})
+            return res.status(200).json(umOrganizacao)
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
+
     static async criaOrganizacao(req, res){
         const novoOrganizacao = req.body
         try {

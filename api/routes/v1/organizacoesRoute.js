@@ -60,6 +60,35 @@ router.get('/v1/organizacoes/:id_organizacao', OrganizacaoController.pegaUmOrgan
 
 /**
  * @swagger
+ * /v1/organizacoes/{id_organizacao}:
+ *   get:
+ *     security:
+ *      - bearerAuth: []
+ *     tags:
+ *      - Organizações
+ *     summary: Retorna uma Organização
+ *     description: Retorna nome de uma Organização
+ *     parameters:
+ *       - name: id_organizacao
+ *         in: path
+ *         description: Id Organização
+ *         required: true
+ *     responses:
+ *       200:
+ *         description: Retorna Organização Sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Organizacoes'
+ *       500:
+ *         description: Erro ao Retornar Organizações.
+ */
+router.post('/v1/organizacoes/nomeOrganizacao', OrganizacaoController.pegaOrganizacaoNome)
+
+/**
+ * @swagger
  * /v1/organizacoes:
  *   post:
  *     security:
