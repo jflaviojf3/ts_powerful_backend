@@ -23,6 +23,16 @@ class CargoController {
     }
   }
 
+  static async pegaCargoNome(req, res){
+    const nomeCargos = req.body.nome
+    try {
+        const umCargo = await database.Cargos.findOne({ where: {nome:nomeCargos}})
+        return res.status(200).json(umCargo)
+    } catch (error) {
+        return res.status(500).json(error.message)
+    }
+}
+
   static async criaCargo(req, res) {
     const novoCargo = req.body;
     try {

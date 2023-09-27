@@ -87,6 +87,37 @@ router.get('/v1/cargos/:id_cargo', CargoController.pegaUmCargo)
  *       500:
  *         description: Erro ao Inserir Cargo.
  */
+router.post('/v1/cargos/nomeCargo', CargoController.pegaCargoNome)
+
+/**
+ * @swagger
+ * /v1/cargos:
+ *   post:
+ *     security:
+ *      - bearerAuth: []
+ *     tags:
+ *      - Cargos
+ *     summary: Insere um novo Cargo.
+ *     description: Insere um novo Cargo.
+ *     requestBody:
+ *       description: Exemplo para inserir um novo Cargo.
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/requestBody/Cargos_put_post'
+ *       required: true
+ *     responses:
+ *       200:
+ *         description: Insere Cargo Com Sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Cargos'
+ *       500:
+ *         description: Erro ao Inserir Cargo.
+ */
 router.post('/v1/cargos', CargoController.criaCargo)
 
 /**
