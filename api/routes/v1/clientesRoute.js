@@ -87,6 +87,37 @@ router.get('/v1/clientes/:id_cliente', ClienteController.pegaUmCliente)
  *       500:
  *         description: Erro ao Inserir Clientes.
  */
+router.post('/v1/clientes/nomeCliente', ClienteController.pegaNomeCliente)
+
+/**
+ * @swagger
+ * /v1/clientes:
+ *   post:
+ *     security:
+ *      - bearerAuth: []
+ *     tags:
+ *      - Clientes
+ *     summary: Insere um novo Cliente.
+ *     description: Insere um novo Cliente.
+ *     requestBody:
+ *       description: Exemplo para inserir um novo Cliente.
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/requestBody/Clientes_put_post'
+ *       required: true
+ *     responses:
+ *       200:
+ *         description: Insere Cliente Com Sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Clientes'
+ *       500:
+ *         description: Erro ao Inserir Clientes.
+ */
 router.post('/v1/clientes', ClienteController.criaCliente)
 
 /**

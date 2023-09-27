@@ -22,6 +22,16 @@ class ClienteController {
     }
   }
 
+  static async pegaNomeCliente(req, res){
+    const nomeCliente = req.body.nome
+    try {
+        const umCliente = await database.Clientes.findOne({ where: {nome:nomeCliente}})
+        return res.status(200).json(umCliente)
+    } catch (error) {
+        return res.status(500).json(error.message)
+    }
+}
+
   static async criaCliente(req, res) {
     const novoCliente = req.body;
     try {
