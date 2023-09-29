@@ -29,7 +29,24 @@ class EquipeController {
     }
   }
 
-  // Ex. /v1/organizacoes/:id_organizacao/equipe
+  // Ex. /v1/organizacoes/:id_organizacao/equipe/nomeEquipe
+  static async pegaNomeEquipe(req, res) {
+    const { id_organizacao } = req.params;
+    const nomeEquipe = req.body.nome ;
+    try {
+      const retornaEquipe = await database.Equipes.findOne({
+        where: {
+          nome: nomeEquipe,
+          id_organizacoes: Number(id_organizacao),
+        },
+      });
+      return res.status(200).json(retornaEquipe);
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  }
+
+    // Ex. /v1/organizacoes/:id_organizacao/equipe
   static async criaEquipe(req, res) {
     const { id_organizacao } = req.params;
     const novaEquipe = { ...req.body, id_organizacoes: id_organizacao };

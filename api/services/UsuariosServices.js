@@ -62,6 +62,20 @@ class UsuariosServices extends Services {
     });
   }
 
+  async pegaNomeUsuario(where) {
+    return database[this.nomeDoModelo].findAll({
+      attributes: {
+        exclude: [
+          "senha",
+          "createdAt",
+          "updatedAt",
+          "deletedAt",
+        ],
+      },
+      where: { nome: where },
+    });
+  }
+
   async validaUsuarioProvedor(dados) {
     //verificar se email já é cadastro
     const usuarioExiste = await this.pegaUmRegistro({

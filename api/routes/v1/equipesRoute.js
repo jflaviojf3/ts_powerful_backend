@@ -101,6 +101,42 @@ router.get('/v1/organizacoes/:id_organizacao/equipes/:id_equipe', EquipeControll
  *       500:
  *         description: Erro ao Inserir Equipes.
  */
+router.post('/v1/organizacoes/:id_organizacao/equipes/nomeEquipe', EquipeController.pegaNomeEquipe)
+
+/**
+ * @swagger
+ * /v1/organizacoes/{id_organizacao}/equipes:
+ *   post:
+ *     security:
+ *      - bearerAuth: []
+ *     tags:
+ *      - Equipes
+ *     summary: Insere uma nova Equipe.
+ *     description: Insere uma nova Equipe relacionado a uma organização
+ *     parameters:
+ *       - name: id_organizacao
+ *         in: path
+ *         description: Id da organização
+ *         required: true
+ *     requestBody:
+ *       description: Exemplo para inserir uma nova Equipe.
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/requestBody/Equipes_put_post'
+ *       required: true
+ *     responses:
+ *       200:
+ *         description: Insere Equipe Com Sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Equipes'
+ *       500:
+ *         description: Erro ao Inserir Equipes.
+ */
 router.post('/v1/organizacoes/:id_organizacao/equipes', EquipeController.criaEquipe)
 
 /**

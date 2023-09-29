@@ -25,6 +25,16 @@ class UsuarioController {
     }
   }
 
+  static async pegaNomeUsuario(req, res) {
+    const nomeUsuario = req.body.nome;
+    try {
+      const umUsuario = await usuariosServices.pegaNomeUsuario(nomeUsuario);
+      return res.status(200).json(umUsuario);
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  }
+
   static async criaUsuario(req, res) {
     const novoUsuario = req.body;
     try {
