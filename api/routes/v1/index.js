@@ -4,7 +4,6 @@ const swaggerJSDoc = require("swagger-jsdoc");
 const cors = require('cors');
 const options = require("../../swagger");
 const swaggerSpec = swaggerJSDoc(options);
-const pageLogin = require('../../tempLogin')
 
 const usuarios = require("./usuariosRoute");
 const auth = require("./authRoute");
@@ -22,10 +21,7 @@ module.exports = (app) => {
   app.use(cors({ origin: '*' }))
   app.use(bodyParser.json());
   app.use("/v1/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-  app.get("/", (req, res) => res.redirect("/telaLogin"));
-  app.get("/telaLogin", (req, res) =>
-    res.send(pageLogin())
-  );
+  app.get("/", (req, res) => res.redirect("/v1/api-docs"));
   app.use(auditorias);
   app.use(auth);
   app.use(usuarios);
