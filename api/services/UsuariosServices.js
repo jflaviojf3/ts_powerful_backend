@@ -18,12 +18,7 @@ class UsuariosServices extends Services {
         //.scope('todos')
         .findAll({
           attributes: {
-            exclude: [
-              "senha",
-              "createdAt",
-              "updatedAt",
-              "deletedAt",
-            ],
+            exclude: ["senha", "createdAt", "updatedAt", "deletedAt"],
           },
           where: { ...where },
         })
@@ -35,12 +30,7 @@ class UsuariosServices extends Services {
       dadosAtualizados,
       {
         attributes: {
-          exclude: [
-            "senha",
-            "createdAt",
-            "updatedAt",
-            "deletedAt",
-          ],
+          exclude: ["senha", "createdAt", "updatedAt", "deletedAt"],
         },
         where: { id_usuarios: where },
       },
@@ -51,26 +41,28 @@ class UsuariosServices extends Services {
   async pegaUmUsuario(where) {
     return database[this.nomeDoModelo].findOne({
       attributes: {
-        exclude: [
-          "senha",
-          "createdAt",
-          "updatedAt",
-          "deletedAt",
-        ],
+        exclude: ["senha", "createdAt", "updatedAt", "deletedAt"],
       },
       where: { id_usuarios: where },
     });
   }
 
+  async pegaUsuariosOrganizacao(where) {
+    return database[this.nomeDoModelo].sequelize.query(`
+    SELECT 
+      id_usuarios,
+      CONCAT(LEFT(nome, 1), '. ', sobrenome) AS nome_completo
+    FROM 
+      Usuarios
+    WHERE 
+    id_organizacoes = ${where}
+  `);
+  }
+
   async pegaNomeUsuario(where) {
     return database[this.nomeDoModelo].findAll({
       attributes: {
-        exclude: [
-          "senha",
-          "createdAt",
-          "updatedAt",
-          "deletedAt",
-        ],
+        exclude: ["senha", "createdAt", "updatedAt", "deletedAt"],
       },
       where: { nome: where },
     });

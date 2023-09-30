@@ -52,13 +52,69 @@ class TarefaController {
     const { id_usuario } = req.params;
     try {
       const tarefasDia = await database.Tarefas.findAll({
-        attributes: [[fn("DATE", col("data_inicio")), "data_dia"]],
-        order: [['data_dia', 'DESC']],
+        attributes: [
+          [fn("DATE", col("data_inicio")), "data_dia"],
+          [
+            database.sequelize.fn(
+              "COUNT",
+              database.sequelize.col("data_inicio")
+            ),
+            "total_tarefas",
+          ],
+        ],
+        order: [["data_dia", "DESC"]],
         group: [fn("DATE", col("data_inicio"))],
         where: {
           id_usuarios: id_usuario,
         },
       });
+      return res.status(200).json(tarefasDia);
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  }
+
+  static async pegaTotalTarefasUsuario(req, res) {
+    const { id_usuario } = req.params;
+    try {
+      const tarefasDia = await database.Tarefas.findAll({
+        attributes: [
+          [
+            database.sequelize.fn(
+              "COUNT",
+              database.sequelize.col("id_tarefas")
+            ),
+            "total_tarefas",
+          ],
+        ],
+        group: [col("id_usuarios")],
+        where: {
+          id_usuarios: id_usuario,
+          data_fim: {
+            [Op.not]: null,
+          },
+
+        },
+      });
+      return res.status(200).json(tarefasDia);
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  }
+
+  static async pegaTarefasPorProjeto(req, res) {
+    const { id_usuario } = req.params;
+    try {
+      const tarefasDia = await database.sequelize.query(`
+      SELECT 
+      CONCAT(LEFT(p.nome, 1), '. ', SUBSTRING_INDEX(p.nome, ' ', -1)) AS projeto , 
+      count(t.id_tarefas) AS quantidade
+      FROM Tarefas t
+      LEFT JOIN Projetos p on p.id_projetos = t.id_projetos
+      WHERE 
+      t.id_usuarios = ${id_usuario}
+      GROUP BY p.nome; 
+    `);
       return res.status(200).json(tarefasDia);
     } catch (error) {
       return res.status(500).json(error.message);
@@ -72,8 +128,8 @@ class TarefaController {
         where: {
           id_usuarios: id_usuario,
           data_fim: {
-            [Op.is]: null
-          }
+            [Op.is]: null,
+          },
         },
       });
       return res.status(200).json(tarefasDia);
@@ -129,15 +185,15 @@ class TarefaController {
         where: {
           id_usuarios: id_usuario,
           data_fim: {
-            [Op.is]: null
-          }
+            [Op.is]: null,
+          },
         },
       });
 
-      if (tarefasAtivas.length >= 1 ){
+      if (tarefasAtivas.length >= 1) {
         const atualizaTarefa = {
-          data_fim: formata.getCurrentDateTime()
-        }
+          data_fim: formata.getCurrentDateTime(),
+        };
         try {
           await database.Tarefas.update(atualizaTarefa, {
             where: {

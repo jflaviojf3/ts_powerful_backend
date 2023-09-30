@@ -25,6 +25,18 @@ class UsuarioController {
     }
   }
 
+  static async pegaUsuariosOrganizacao(req, res) {
+    const { id_organizacaos } = req.params;
+    try {
+      const usuarioOrg = await usuariosServices.pegaUsuariosOrganizacao(
+        Number(id_organizacaos)
+      );
+      return res.status(200).json(usuarioOrg);
+    } catch (error) {
+      return res.status(500).json(error.message);
+    }
+  }
+
   static async pegaNomeUsuario(req, res) {
     const nomeUsuario = req.body.nome;
     try {

@@ -133,6 +133,39 @@ router.get('/v1/usuarios/:id_usuario/tarefaDia/:dia', TarefaController.pegaTaref
  */
 router.get('/v1/usuarios/:id_usuario/tarefaAtiva', TarefaController.pegaTarefaAtivaUsuario)
 
+/**
+ * @swagger
+ * /v1/usuarios/{id_usuario}/tarefaDia/{dia}:
+ *   get:
+ *     security:
+ *      - bearerAuth: []
+ *     tags:
+ *      - Tarefas
+ *     summary: Retorna lista de tarefas incluidas no dia.
+ *     description: Retorna lista de tarefas incluidas no dia com todas as entradas;
+ *     parameters:
+ *       - name: id_usuario
+ *         in: path
+ *         description: Id do usuário para retorna tarefas de um usuário
+ *         required: true
+ *       - name: dia
+ *         in: path
+ *         description: Dia atual ou o dia que pretende retornar
+ *         required: true
+ *         example: 20230501
+ *     responses:
+ *       200:
+ *         description: Lista de Tarefa do dia Sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Tarefas'
+ *       500:
+ *         description: Erro ao Retornar Lista de Tarefas do dia.
+ */
+router.get('/v1/usuarios/:id_usuario/totalTarefasUsuario', TarefaController.pegaTotalTarefasUsuario)
 
 /**
  * @swagger
@@ -167,6 +200,40 @@ router.get('/v1/usuarios/:id_usuario/tarefaAtiva', TarefaController.pegaTarefaAt
  *         description: Erro ao Retornar Lista de Tarefas do dia.
  */
 router.get('/v1/usuarios/:id_usuario/tarefaPorDia', TarefaController.pegaTarefasPorDiaUsuario)
+
+/**
+ * @swagger
+ * /v1/usuarios/{id_usuario}/tarefasPorDia:
+ *   get:
+ *     security:
+ *      - bearerAuth: []
+ *     tags:
+ *      - Tarefas
+ *     summary: Retorna lista de tarefas incluidas no dia.
+ *     description: Retorna lista de tarefas incluidas no dia com todas as entradas;
+ *     parameters:
+ *       - name: id_usuario
+ *         in: path
+ *         description: Id do usuário para retorna tarefas de um usuário
+ *         required: true
+ *       - name: dia
+ *         in: path
+ *         description: Dia atual ou o dia que pretende retornar
+ *         required: true
+ *         example: 20230501
+ *     responses:
+ *       200:
+ *         description: Lista de Tarefa do dia Sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Tarefas'
+ *       500:
+ *         description: Erro ao Retornar Lista de Tarefas do dia.
+ */
+router.get('/v1/usuarios/:id_usuario/tarefasProjeto', TarefaController.pegaTarefasPorProjeto)
 
 /**
  * @swagger

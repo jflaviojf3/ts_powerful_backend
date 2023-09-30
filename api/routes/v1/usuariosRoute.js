@@ -125,6 +125,35 @@ router.get("/v1/usuarios/:id_usuario", papeis([4, 3, 2, 1]), UsuarioController.p
 /**
  * @swagger
  * /v1/usuarios/{id_usuario}:
+ *   get:
+ *     security:
+ *      - bearerAuth: []
+ *     tags:
+ *      - Usuarios
+ *     summary: Retorna um usuário consultando por id
+ *     description: Retorna um usuário base do sistema
+ *     parameters:
+ *       - name: id_usuario
+ *         in: path
+ *         description: Id do usuário para retornar um usuário
+ *         required: true
+ *     responses:
+ *       200:
+ *         description: Retorna um usuário com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Usuarios'
+ *       500:
+ *         description: Erro ao retornar usuário.
+ */
+router.get("/v1/usuarios/organizacao/:id_organizacaos", papeis([4, 3]), UsuarioController.pegaUsuariosOrganizacao);
+
+/**
+ * @swagger
+ * /v1/usuarios/{id_usuario}:
  *   put:
  *     security:
  *      - bearerAuth: []

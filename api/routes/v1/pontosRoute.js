@@ -1,7 +1,7 @@
-const { Router } = require('express')
-const PontoController = require ('../../controllers/PontoController')
+const { Router } = require("express");
+const PontoController = require("../../controllers/PontoController");
 
-const router = Router()
+const router = Router();
 
 /**
  * @swagger
@@ -30,7 +30,10 @@ const router = Router()
  *       500:
  *         description: Erro ao Retornar Lista de Pontos de Usuários.
  */
-router.get('/v1/usuarios/:id_usuario/pontos', PontoController.pegaTodosPontosUsuario)
+router.get(
+  "/v1/usuarios/:id_usuario/pontos",
+  PontoController.pegaTodosPontosUsuario
+);
 
 /**
  * @swagger
@@ -63,7 +66,10 @@ router.get('/v1/usuarios/:id_usuario/pontos', PontoController.pegaTodosPontosUsu
  *       500:
  *         description: Erro ao Retornar um Ponto do Usuários.
  */
-router.get('/v1/usuarios/:id_usuario/pontos/:id_ponto', PontoController.pegaUmPontoUsuario)
+router.get(
+  "/v1/usuarios/:id_usuario/pontos/:id_ponto",
+  PontoController.pegaUmPontoUsuario
+);
 
 /**
  * @swagger
@@ -97,7 +103,10 @@ router.get('/v1/usuarios/:id_usuario/pontos/:id_ponto', PontoController.pegaUmPo
  *       500:
  *         description: Erro ao Retornar Lista de Pontos do dia.
  */
-router.get('/v1/usuarios/:id_usuario/pontosDia/:dia', PontoController.pegaPontoDoDiaUsuario)
+router.get(
+  "/v1/usuarios/:id_usuario/pontosDia/:dia",
+  PontoController.pegaPontoDoDiaUsuario
+);
 
 /**
  * @swagger
@@ -136,7 +145,52 @@ router.get('/v1/usuarios/:id_usuario/pontosDia/:dia', PontoController.pegaPontoD
  *       500:
  *         description: Erro ao Retornar Lista de Pontos do Periodo.
  */
-router.get('/v1/usuarios/:id_usuario/pontoInicio/:data_inicio/pontoFim/:data_fim', PontoController.pegaPeriodoPontoUsuario)
+router.get(
+  "/v1/usuarios/:id_usuario/pontoInicio/:data_inicio/pontoFim/:data_fim",
+  PontoController.pegaPeriodoPontoUsuario
+);
+
+/**
+ * @swagger
+ * /v1/usuarios/{id_usuario}/pontoInicio/{data_inicio}/pontoFim/{data_fim}:
+ *   get:
+ *     security:
+ *      - bearerAuth: []
+ *     tags:
+ *      - Pontos
+ *     summary: Retorna lista de pontos incluidas no periodo.
+ *     description: Retorna lista de pontos incluidas no periodo informado;
+ *     parameters:
+ *       - name: id_usuario
+ *         in: path
+ *         description: Id do usuário para retorna pontos de um usuário
+ *         required: true
+ *       - name: data_inicio
+ *         in: path
+ *         description: Data inicio do periodo
+ *         required: true
+ *         example: 20230501
+ *       - name: data_fim
+ *         in: path
+ *         description: Data fim do periodo
+ *         required: true
+ *         example: 20230509
+ *     responses:
+ *       200:
+ *         description: Lista de pontos do Periodo com Sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Pontos'
+ *       500:
+ *         description: Erro ao Retornar Lista de Pontos do Periodo.
+ */
+router.get(
+  "/v1/usuarios/:id_usuario/pontoInicio/:data_inicio/pontoFim/:data_fim/bancoHora",
+  PontoController.pegaPeriodoPontoUsuarioHoraBanco
+);
 
 /**
  * @swagger
@@ -172,7 +226,7 @@ router.get('/v1/usuarios/:id_usuario/pontoInicio/:data_inicio/pontoFim/:data_fim
  *       500:
  *         description: Erro ao Inserir Pontos.
  */
-router.post('/v1/usuarios/:id_usuario/pontos', PontoController.criaPonto)
+router.post("/v1/usuarios/:id_usuario/pontos", PontoController.criaPonto);
 
 /**
  * @swagger
@@ -212,7 +266,10 @@ router.post('/v1/usuarios/:id_usuario/pontos', PontoController.criaPonto)
  *       500:
  *         description: Erro ao Retornar Ponto Atualizado
  */
-router.put('/v1/usuarios/:id_usuario/pontos/:id_ponto', PontoController.atualizaPontos)
+router.put(
+  "/v1/usuarios/:id_usuario/pontos/:id_ponto",
+  PontoController.atualizaPontos
+);
 
 /**
  * @swagger
@@ -245,6 +302,9 @@ router.put('/v1/usuarios/:id_usuario/pontos/:id_ponto', PontoController.atualiza
  *       500:
  *         description: Erro ao Deletar Ponto.
  */
-router.delete('/v1/usuarios/:id_usuario/pontos/:id_ponto', PontoController.deletaPonto)
+router.delete(
+  "/v1/usuarios/:id_usuario/pontos/:id_ponto",
+  PontoController.deletaPonto
+);
 
-module.exports = router
+module.exports = router;
